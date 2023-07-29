@@ -22,8 +22,12 @@ export class Posn {
     return new Posn(this.x + dx, this.y + dy);
   }
 
-  dividedBy(n: number): Posn {
-    return new Posn(Math.round(this.x / n), Math.round(this.y / n));
+  dividedBy(nx: number, ny?: number): Posn {
+    return new Posn(Math.round(this.x / nx), Math.round(this.y / (ny || nx)));
+  }
+
+  times(mx: number, my?: number): Posn {
+    return new Posn(this.x * mx, this.y * (my === undefined ? mx : my));
   }
 
   toString(): string {

@@ -24,8 +24,8 @@
     "coconfig": "@openapi-typescript-infra/coconfig"
   },
   "scripts": {
-    "build": "tsup --tsconfig tsconfig.build.json src",
-    "build:example": "cd example && tsup --tsconfig tsconfig.example.json --format iife src/index.ts",
+    "build": "tsup src/index.ts",
+    "build:example": "cd example && tsup --platform browser --tsconfig tsconfig.example.json --target chrome112 --format iife src/index.ts",
     "clean": "yarn dlx rimraf dist",
     "format": "yarn prettier --write .",
     "lint": "yarn prettier --check .",
@@ -59,6 +59,7 @@
     ]
   },
   "dependencies": {
+    "canvas": "^2.11.2",
     "konva": "^9.2.0"
   }
 }

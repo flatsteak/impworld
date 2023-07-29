@@ -1,3 +1,3 @@
-export * from './Posn';
-export * from './PlacedObjects';
+export * from './util/Posn';
+export * from './WorldImage';
 export * from './World';

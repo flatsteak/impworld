@@ -1,1 +1,3 @@
-export abstract class World {}
+export * from './World';
+export * from './WorldScene';
+export * from './WorldEnd';
