@@ -1,5 +1,5 @@
 node_modules
-build
+dist/
 
 .yarn/*
 !.yarn/patches
@@ -17,3 +17,6 @@ tsconfig.build.json
 .eslintrc.js
 .commitlintrc.json
 vitest.config.ts
+/test-results/
+/playwright-report/
+/playwright/.cache/

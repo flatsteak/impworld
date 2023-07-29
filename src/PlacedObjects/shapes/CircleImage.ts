@@ -1,5 +1,3 @@
 import { PlacedObject } from '@/PlacedObjects/PlacedObject';
 
-export class CircleImage implements PlacedObject {
-
-}
+export class CircleImage implements PlacedObject {}

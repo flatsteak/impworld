@@ -6,7 +6,10 @@ export enum CombinationDirection {
 }
 
 export class Combination extends PlacedObject {
-  constructor(private objects: PlacedObject[], private direction: CombinationDirection) {
+  constructor(
+    private objects: PlacedObject[],
+    private direction: CombinationDirection,
+  ) {
     super();
   }
 }

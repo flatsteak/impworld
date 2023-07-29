@@ -1,7 +1,10 @@
 export class Posn {
   static readonly origin = new Posn(0, 0);
 
-  constructor(public x: number, public y: number) { }
+  constructor(
+    public x: number,
+    public y: number,
+  ) {}
 
   equals(other: Posn): boolean {
     return this.x === other.x && this.y === other.y;

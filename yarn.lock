@@ -517,10 +517,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@openapi-typescript-infra/coconfig@npm:^3.3.3":
-  version: 3.3.3
-  resolution: "@openapi-typescript-infra/coconfig@npm:3.3.3"
-  checksum: db34b0540c6c3f59bf0280cc04457f325f95605ab437bc113972ee00c4811fcf85f4afb084de4f3bf891e2f22abcb50081cb330bcaa2dd137b3910344d7ec87d
+"@openapi-typescript-infra/coconfig@npm:^3.3.4":
+  version: 3.3.4
+  resolution: "@openapi-typescript-infra/coconfig@npm:3.3.4"
+  checksum: 0f0d752421b19ddb9d1a365b1e3d57b6cb6a869b8af38e2f825cb869fe457b872bb2e28b4c537343147a1ff0128ada16a82766017e69f0acb7d512252d2b8ef9
   languageName: node
   linkType: hard
 
@@ -528,6 +528,22 @@ __metadata:
   version: 0.11.0
   resolution: "@pkgjs/parseargs@npm:0.11.0"
   checksum: 6ad6a00fc4f2f2cfc6bff76fb1d88b8ee20bc0601e18ebb01b6d4be583733a860239a521a7fbca73b612e66705078809483549d2b18f370eb346c5155c8e4a0f
+  languageName: node
+  linkType: hard
+
+"@playwright/test@npm:^1.36.2":
+  version: 1.36.2
+  resolution: "@playwright/test@npm:1.36.2"
+  dependencies:
+    "@types/node": "*"
+    fsevents: 2.3.2
+    playwright-core: 1.36.2
+  dependenciesMeta:
+    fsevents:
+      optional: true
+  bin:
+    playwright: cli.js
+  checksum: 659304e0bbbafb2fa36395fbd8bd2c5db2b7791bbb55fa62409946ec7ec726cf8fff89f2b8a1a74fe831bf50a8780a37a5322a1251a6f7db2a9220a57ac408f0
   languageName: node
   linkType: hard
 
@@ -1661,7 +1677,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fsevents@npm:~2.3.2":
+"fsevents@npm:2.3.2, fsevents@npm:~2.3.2":
   version: 2.3.2
   resolution: "fsevents@npm:2.3.2"
   dependencies:
@@ -1671,7 +1687,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fsevents@patch:fsevents@~2.3.2#~builtin<compat/fsevents>":
+"fsevents@patch:fsevents@2.3.2#~builtin<compat/fsevents>, fsevents@patch:fsevents@~2.3.2#~builtin<compat/fsevents>":
   version: 2.3.2
   resolution: "fsevents@patch:fsevents@npm%3A2.3.2#~builtin<compat/fsevents>::version=2.3.2&hash=df0bf1"
   dependencies:
@@ -1950,11 +1966,13 @@ __metadata:
   dependencies:
     "@commitlint/cli": ^17.6.7
     "@commitlint/config-conventional": ^17.6.7
-    "@openapi-typescript-infra/coconfig": ^3.3.3
+    "@openapi-typescript-infra/coconfig": ^3.3.4
+    "@playwright/test": ^1.36.2
     "@semantic-release/changelog": ^6.0.3
     "@semantic-release/exec": ^6.0.3
     "@semantic-release/git": ^10.0.1
     coconfig: ^0.13.3
+    konva: ^9.2.0
     prettier: ^3.0.0
     tsup: ^7.1.0
     vitest: ^0.33.0
@@ -2188,6 +2206,13 @@ __metadata:
   version: 6.0.3
   resolution: "kind-of@npm:6.0.3"
   checksum: 3ab01e7b1d440b22fe4c31f23d8d38b4d9b91d9f291df683476576493d5dfd2e03848a8b05813dd0c3f0e835bc63f433007ddeceb71f05cb25c45ae1b19c6d3b
+  languageName: node
+  linkType: hard
+
+"konva@npm:^9.2.0":
+  version: 9.2.0
+  resolution: "konva@npm:9.2.0"
+  checksum: 12f8635b54189a8788f9e49e1426b9e80e934769df2750a66b0ae4c88b22ae765e373fec7573411b46e5225086437bb99030ef0497c79e9e199e774bac835845
   languageName: node
   linkType: hard
 
@@ -2966,6 +2991,15 @@ __metadata:
     mlly: ^1.2.0
     pathe: ^1.1.0
   checksum: 4b305c834b912ddcc8a0fe77530c0b0321fe340396f84cbb87aecdbc126606f47f2178f23b8639e71a4870f9631c7217aef52ffed0ae17ea2dbbe7e43d116a6e
+  languageName: node
+  linkType: hard
+
+"playwright-core@npm:1.36.2":
+  version: 1.36.2
+  resolution: "playwright-core@npm:1.36.2"
+  bin:
+    playwright-core: cli.js
+  checksum: 2193ce802ef93c28b9b5e11a0b1d7b60778c686015659978d1cbf0eb9cda2cdc85ec5575b887c1346e9d161cc2805bf27638d76a2f7f857dffeae968e6ceffcd
   languageName: node
   linkType: hard
 
