@@ -1,0 +1,59 @@
+{
+  "name": "impworld",
+  "version": "1.0.0",
+  "description": "A Typescript/HTML port of Northeastern's impworld learning library for simple game construction",
+  "main": "dist/index.js",
+  "repository": "git@github.com:flatsteak/impworld.git",
+  "author": "Pyralis <developers@pyralis.com>",
+  "license": "MIT",
+  "packageManager": "yarn@3.6.1",
+  "devDependencies": {
+    "@commitlint/cli": "^17.6.7",
+    "@commitlint/config-conventional": "^17.6.7",
+    "@openapi-typescript-infra/coconfig": "^3.3.3",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/exec": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
+    "coconfig": "^0.13.3",
+    "prettier": "^3.0.0",
+    "tsup": "^7.1.0",
+    "vitest": "^0.33.0"
+  },
+  "config": {
+    "coconfig": "@openapi-typescript-infra/coconfig"
+  },
+  "scripts": {
+    "build": "tsup --tsconfig tsconfig.build.json src",
+    "clean": "yarn dlx rimraf dist",
+    "lint": "yarn prettier --check .",
+    "postinstall": "yarn coconfig",
+    "prettier": "yarn prettier --write .",
+    "test": "vitest"
+  },
+  "keywords": [
+    "Northeastern",
+    "racket",
+    "impworld"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "release": {
+    "branches": [
+      "main"
+    ],
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/changelog",
+      [
+        "@semantic-release/exec",
+        {
+          "publishCmd": "yarn dlx pinst --disable"
+        }
+      ],
+      "@semantic-release/npm",
+      "@semantic-release/git"
+    ]
+  }
+}
