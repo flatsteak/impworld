@@ -25,6 +25,7 @@
     "jsdom": "^22.1.0",
     "prettier": "^3.0.0",
     "tsup": "^7.1.0",
+    "typescript": "^5.1.6",
     "vite-tsconfig-paths": "^4.2.0",
     "vitest": "^0.33.0",
     "vitest-canvas-mock": "^0.3.2"
@@ -40,7 +41,7 @@
     "lint": "yarn prettier --check .",
     "postinstall": "yarn coconfig",
     "test": "vitest",
-    "typecheck": "tsc --noEmit -p tsconfig.json"
+    "typecheck": "tsc --noEmit --project tsconfig.json"
   },
   "keywords": [
     "Northeastern",

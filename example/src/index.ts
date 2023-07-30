@@ -6,6 +6,7 @@ import {
   OutlineMode,
   Posn,
   RectangleImage,
+  RotateImage,
   TextImage,
   World,
 } from '../../src/index';
@@ -70,6 +71,12 @@ class TestWorld extends World {
     scene.placeImageXY(rp, 0, 0);
     scene.placeImageXY(rpp, 0, 0);
     scene.placeImageXY(new CircleImage(40, OutlineMode.OUTLINE, Color.GREEN), 0, 0);
+
+    const rotated = new RotateImage(
+      new RectangleImage(50, 25, OutlineMode.SOLID, Color.BLUE),
+      this.tickCount % 360,
+    );
+    scene.placeImageXY(rotated, 200, 200);
     return scene;
   }
 }
