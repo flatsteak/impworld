@@ -7,6 +7,7 @@ import { RenderContext } from '@/RenderContext';
 export enum CombinationDirection {
   LeftToRight,
   TopToBottom,
+  Overlay,
 }
 
 export class CombinationImage extends WorldImage {
@@ -25,6 +26,8 @@ export class CombinationImage extends WorldImage {
           return new Posn(acc.x + sz.x, Math.max(acc.y, sz.y));
         case CombinationDirection.TopToBottom:
           return new Posn(Math.max(acc.x, sz.x), acc.y + sz.y);
+        case CombinationDirection.Overlay:
+          return new Posn(Math.max(acc.x, sz.x), Math.max(acc.y, sz.y));
         default:
           throw new Error('Invalid direction');
       }
@@ -48,6 +51,8 @@ export class CombinationImage extends WorldImage {
         case CombinationDirection.TopToBottom:
           spot = spot.moved(0, obj.size().y);
           break;
+        case CombinationDirection.Overlay:
+          break;
         default:
           throw new Error('Invalid direction');
       }
@@ -67,5 +72,11 @@ export class BesideImage extends CombinationImage {
 export class AboveImage extends CombinationImage {
   constructor(...images: WorldImages) {
     super(images, CombinationDirection.TopToBottom);
+  }
+}
+
+export class OverlayImage extends CombinationImage {
+  constructor(...images: WorldImages) {
+    super(images, CombinationDirection.Overlay);
   }
 }
