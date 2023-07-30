@@ -1,3 +1,11 @@
+## [1.0.3](https://github.com/flatsteak/impworld/compare/v1.0.2...v1.0.3) (2023-07-30)
+
+
+### Bug Fixes
+
+* **color:** add brighter method ([59d926f](https://github.com/flatsteak/impworld/commit/59d926f737f30092943844daafbc51ec7bbc0123))
+* **image:** add overlay image ([bf139f5](https://github.com/flatsteak/impworld/commit/bf139f50c0299e0ce4a5322ff45cfc3ffca3c087))
+
 ## [1.0.2](https://github.com/flatsteak/impworld/compare/v1.0.1...v1.0.2) (2023-07-30)
 
 ### Bug Fixes
