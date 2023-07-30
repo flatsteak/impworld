@@ -46,6 +46,9 @@ export class TextImage extends WorldImage {
       y: 0,
       align: 'left',
       text: this.text,
+      fontSize: this.fontSize,
+      fontStyle: this.fontStyle,
+      fill: this.color.toString(),
     });
   }
 
@@ -55,14 +58,7 @@ export class TextImage extends WorldImage {
   }
 
   getItemsToRender(ctx: RenderContext, position: Posn) {
-    return new Konva.Text({
-      x: position.x,
-      y: position.y,
-      align: 'left',
-      text: this.text,
-      fontSize: this.fontSize,
-      fontStyle: this.fontStyle,
-      fill: this.color.toString(),
-    });
+    this.node.setPosition(position.toVector());
+    return this.node;
   }
 }

@@ -33,4 +33,8 @@ export class Posn {
   toString(): string {
     return `(${this.x}, ${this.y})`;
   }
+
+  toVector() {
+    return { x: this.x, y: this.y };
+  }
 }

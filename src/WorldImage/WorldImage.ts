@@ -17,4 +17,12 @@ export abstract class WorldImage {
     }
     return this.pinhole;
   }
+
+  getWidth() {
+    return this.size().x;
+  }
+
+  getHeight() {
+    return this.size().y;
+  }
 }

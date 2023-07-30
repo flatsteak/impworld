@@ -6,12 +6,22 @@ import { RenderContext } from '@/RenderContext';
 import { Color } from '@/util/Color';
 
 export class CircleImage extends WorldImage {
+  node: Konva.Circle;
+
   constructor(
     private radius: number,
     private outline: OutlineMode,
     private color: Color,
   ) {
     super();
+    this.node = new Konva.Circle({
+      x: 0,
+      y: 0,
+      radius: this.radius - 1,
+      fill: this.outline === OutlineMode.SOLID ? this.color.toString() : undefined,
+      stroke: this.color.toString(),
+      strokeWidth: 1,
+    });
   }
 
   size() {
@@ -19,13 +29,7 @@ export class CircleImage extends WorldImage {
   }
 
   getItemsToRender(ctx: RenderContext, position: Posn) {
-    return new Konva.Circle({
-      x: position.x,
-      y: position.y,
-      radius: this.radius - 1,
-      fill: this.outline === OutlineMode.SOLID ? this.color.toString() : undefined,
-      stroke: this.color.toString(),
-      strokeWidth: 1,
-    });
+    this.node.setPosition(position.toVector());
+    return this.node;
   }
 }

@@ -3,6 +3,7 @@ import { Layer } from 'konva/lib/Layer';
 import { WorldImage } from './WorldImage';
 import Konva from 'konva';
 import { RenderContext } from '@/RenderContext';
+import { AlignModeX, AlignModeY } from '@/WorldImage';
 
 export enum CombinationDirection {
   LeftToRight,
@@ -14,6 +15,8 @@ export class CombinationImage extends WorldImage {
   constructor(
     private objects: WorldImage[],
     private direction: CombinationDirection,
+    private alignX: AlignModeX = AlignModeX.LEFT,
+    private alignY: AlignModeY = AlignModeY.TOP,
   ) {
     super();
   }
@@ -78,5 +81,17 @@ export class AboveImage extends CombinationImage {
 export class OverlayImage extends CombinationImage {
   constructor(...images: WorldImages) {
     super(images, CombinationDirection.Overlay);
+  }
+}
+
+export class BesideAlignImage extends CombinationImage {
+  constructor(alignY: AlignModeY, ...images: WorldImages) {
+    super(images, CombinationDirection.LeftToRight, undefined, alignY);
+  }
+}
+
+export class AboveAlignImage extends CombinationImage {
+  constructor(alignX: AlignModeX, ...images: WorldImages) {
+    super(images, CombinationDirection.LeftToRight, alignX, undefined);
   }
 }
