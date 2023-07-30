@@ -1,3 +1,10 @@
+## [1.0.8](https://github.com/flatsteak/impworld/compare/v1.0.7...v1.0.8) (2023-07-30)
+
+
+### Bug Fixes
+
+* **image:** add image rotation ([856df6e](https://github.com/flatsteak/impworld/commit/856df6e924c7425bf278b90f38976d9216520f67))
+
 ## [1.0.7](https://github.com/flatsteak/impworld/compare/v1.0.6...v1.0.7) (2023-07-30)
 
 
