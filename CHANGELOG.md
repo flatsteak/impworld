@@ -1,3 +1,10 @@
+## [1.0.7](https://github.com/flatsteak/impworld/compare/v1.0.6...v1.0.7) (2023-07-30)
+
+
+### Bug Fixes
+
+* **ci:** bump coconfig ([9ca81f5](https://github.com/flatsteak/impworld/commit/9ca81f529d03e1eba47c2834022dbe0a2d5288cb))
+
 ## [1.0.6](https://github.com/flatsteak/impworld/compare/v1.0.5...v1.0.6) (2023-07-30)
 
 
