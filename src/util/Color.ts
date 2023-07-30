@@ -13,4 +13,5 @@ export class Color {
   static BLUE = new Color('blue');
   static ORANGE = new Color('orange');
   static YELLOW = new Color('#ffff00');
+  static LIGHT_GRAY = new Color('#c0c0c0');
 }
