@@ -73,10 +73,10 @@ export class Color {
       return this.times(r, r, r, 1);
     }
     return new Color(
-      this.getRed() * r,
-      this.getGreen() * (g === undefined ? 1 : g),
-      this.getBlue() * (b === undefined ? 1 : b),
-      this.getAlpha() * (a === undefined ? 1 : a),
+      Math.round(this.getRed() * r),
+      Math.round(this.getGreen() * (g === undefined ? 1 : g)),
+      Math.round(this.getBlue() * (b === undefined ? 1 : b)),
+      Math.round(this.getAlpha() * (a === undefined ? 1 : a)),
     );
   }
 
