@@ -11,11 +11,11 @@ export class Posn {
   }
 
   plus(other: Posn): Posn {
-    return new Posn(this.x + other.x, this.y + other.y);
+    return this.moved(other.x, other.y);
   }
 
   minus(other: Posn): Posn {
-    return new Posn(this.x - other.x, this.y - other.y);
+    return new Posn(Math.round(this.x - other.x), Math.round(this.y - other.y));
   }
 
   moved(dx: number, dy: number): Posn {

@@ -25,4 +25,12 @@ export abstract class WorldImage {
   getHeight() {
     return this.size().y;
   }
+
+  movePinhole(dx: number, dy: number) {
+    this.pinhole = this.getPinhole().moved(dx, dy);
+  }
+
+  movePinholeTo(pos: Posn) {
+    this.pinhole = pos;
+  }
 }
