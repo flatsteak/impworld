@@ -1,3 +1,10 @@
+## [1.0.5](https://github.com/flatsteak/impworld/compare/v1.0.4...v1.0.5) (2023-07-30)
+
+
+### Bug Fixes
+
+* **image:** add some placeholders for other image combinations ([5ee3ad4](https://github.com/flatsteak/impworld/commit/5ee3ad43493334bdaf511e0be8fedd542e0b8b1a))
+
 ## [1.0.4](https://github.com/flatsteak/impworld/compare/v1.0.3...v1.0.4) (2023-07-30)
 
 
