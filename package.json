@@ -26,7 +26,7 @@
     "vitest": "^0.33.0"
   },
   "config": {
-    "coconfig": "@openapi-typescript-infra/coconfig"
+    "coconfig": "./coconfig.ts"
   },
   "scripts": {
     "build": "tsup src/index.ts",
