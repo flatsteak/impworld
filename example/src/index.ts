@@ -2,9 +2,11 @@ import {
   AboveImage,
   BesideImage,
   CircleImage,
+  Color,
   OutlineMode,
   Posn,
   RectangleImage,
+  TextImage,
   World,
 } from '../../src/index';
 
@@ -25,7 +27,7 @@ class TestWorld extends World {
     );
   }
 
-  onTick = () => {
+  onTick() {
     this.tickCount += 1;
     const next = this.position.moved(10 * this.direction.x, 10 * this.direction.y);
     if (next.x > this.gameSize.x || next.x < 0) {
@@ -38,7 +40,7 @@ class TestWorld extends World {
     if (this.tickCount === 1000) {
       return this.endOfWorld('Tick done');
     }
-  };
+  }
 
   makeScene() {
     const scene = this.getEmptyScene();
@@ -48,13 +50,17 @@ class TestWorld extends World {
       this.position.y,
     );
 
-    const r1 = new RectangleImage(50, 50, OutlineMode.OUTLINE, 'green');
-    const r2 = new RectangleImage(50, 50, OutlineMode.SOLID, 'blue');
-    const r3 = new RectangleImage(50, 50, OutlineMode.OUTLINE, 'red');
+    const r1 = new RectangleImage(50, 50, OutlineMode.OUTLINE, Color.GREEN);
+    const r2 = new RectangleImage(50, 50, OutlineMode.SOLID, Color.BLUE);
+    const r3 = new RectangleImage(50, 50, OutlineMode.OUTLINE, Color.RED);
     scene.placeImageXY(
       new AboveImage(
         new BesideImage(r1, r2, r3),
-        new RectangleImage(150, 50, OutlineMode.SOLID, 'orange'),
+        new RectangleImage(150, 50, OutlineMode.SOLID, Color.ORANGE),
+        new BesideImage(
+          new TextImage('Hello ', 20, Color.BLACK),
+          new TextImage('World', 20, Color.BLACK),
+        ),
       ),
       100,
       100,
@@ -65,4 +71,5 @@ class TestWorld extends World {
 
 const world = new TestWorld(new Posn(window.innerWidth, window.innerHeight));
 world.bigBang(world.gameSize.x, world.gameSize.y, 0.01);
-console.log('LOADED');
+
+console.log('The world has started');

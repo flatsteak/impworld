@@ -46,6 +46,12 @@ export abstract class World {
       height,
     });
     this.layer = new Konva.Layer();
+    this.stage.on('click', (e) => {
+      const position = this.stage?.getPointerPosition();
+      if (position) {
+        this.onMouseClicked(new Posn(position.x, position.y));
+      }
+    });
     this.stage.add(this.layer);
 
     this.runTick();

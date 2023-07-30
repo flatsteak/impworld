@@ -56,14 +56,16 @@ export class CombinationImage extends WorldImage {
   }
 }
 
+type WorldImages = [WorldImage, ...WorldImage[]];
+
 export class BesideImage extends CombinationImage {
-  constructor(image: WorldImage, ...others: WorldImage[]) {
-    super([image, ...others], CombinationDirection.LeftToRight);
+  constructor(...images: WorldImages) {
+    super(images, CombinationDirection.LeftToRight);
   }
 }
 
 export class AboveImage extends CombinationImage {
-  constructor(image: WorldImage, ...others: WorldImage[]) {
-    super([image, ...others], CombinationDirection.TopToBottom);
+  constructor(...images: WorldImages) {
+    super(images, CombinationDirection.TopToBottom);
   }
 }

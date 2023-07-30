@@ -3,12 +3,13 @@ import { Posn } from '@/util/Posn';
 import Konva from 'konva';
 import { OutlineMode } from '@/WorldImage';
 import { RenderContext } from '@/RenderContext';
+import { Color } from '@/util/Color';
 
 export class CircleImage extends WorldImage {
   constructor(
     private radius: number,
     private outline: OutlineMode,
-    private color: string,
+    private color: Color,
   ) {
     super();
   }
@@ -21,10 +22,10 @@ export class CircleImage extends WorldImage {
     return new Konva.Circle({
       x: position.x,
       y: position.y,
-      radius: this.radius - 2,
-      fill: this.outline === OutlineMode.SOLID ? this.color : undefined,
-      stroke: this.color,
-      strokeWidth: 2,
+      radius: this.radius - 1,
+      fill: this.outline === OutlineMode.SOLID ? this.color.toString() : undefined,
+      stroke: this.color.toString(),
+      strokeWidth: 1,
     });
   }
 }

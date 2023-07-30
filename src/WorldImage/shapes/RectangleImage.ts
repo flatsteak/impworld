@@ -3,13 +3,14 @@ import { Posn } from '@/util/Posn';
 import Konva from 'konva';
 import { OutlineMode } from '@/WorldImage';
 import { RenderContext } from '@/RenderContext';
+import { Color } from '@/util/Color';
 
 export class RectangleImage extends WorldImage {
   constructor(
     private width: number,
     private height: number,
     private outline: OutlineMode,
-    private color: string,
+    private color: Color,
   ) {
     super();
   }
@@ -22,11 +23,11 @@ export class RectangleImage extends WorldImage {
     return new Konva.Rect({
       x: position.x,
       y: position.y,
-      width: this.width - 4,
-      height: this.height - 4,
-      fill: this.outline === OutlineMode.SOLID ? this.color : undefined,
-      stroke: this.color,
-      strokeWidth: 2,
+      width: this.width - 2,
+      height: this.height - 2,
+      fill: this.outline === OutlineMode.SOLID ? this.color.toString() : undefined,
+      stroke: this.color.toString(),
+      strokeWidth: 1,
     });
   }
 }
