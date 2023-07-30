@@ -1,3 +1,10 @@
+## [1.0.6](https://github.com/flatsteak/impworld/compare/v1.0.5...v1.0.6) (2023-07-30)
+
+
+### Bug Fixes
+
+* **pos:** cleanup some positional handling ([75035d5](https://github.com/flatsteak/impworld/commit/75035d59d68a05070462c4da8f4a2d4b2677c22d))
+
 ## [1.0.5](https://github.com/flatsteak/impworld/compare/v1.0.4...v1.0.5) (2023-07-30)
 
 
