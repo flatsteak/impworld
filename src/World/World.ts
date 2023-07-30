@@ -41,9 +41,12 @@ export abstract class World {
 
   bigBang(width: number, height: number, speed: number) {
     this.stage = new Konva.Stage({
-      container: 'container',
+      container: 'world',
       width,
       height,
+    });
+    document.getElementById('world')?.addEventListener('keydown', (e) => {
+      this.onKeyEvent(e.key);
     });
     this.layer = new Konva.Layer();
     this.stage.on('click', (e) => {
