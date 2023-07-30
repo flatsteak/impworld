@@ -3,6 +3,7 @@
   "version": "1.0.1",
   "description": "A Typescript/HTML port of Northeastern's impworld learning library for simple game construction",
   "main": "dist/index.global.js",
+  "types": "dist/index.d.ts",
   "repository": "git@github.com:flatsteak/impworld.git",
   "author": "Pyralis <developers@pyralis.com>",
   "license": "MIT",
