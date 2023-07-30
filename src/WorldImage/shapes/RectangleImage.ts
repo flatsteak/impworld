@@ -7,6 +7,7 @@ import { Color } from '@/util/Color';
 
 export class RectangleImage extends WorldImage {
   node: Konva.Rect;
+  centerOffset: Posn;
 
   constructor(
     private width: number,
@@ -15,9 +16,8 @@ export class RectangleImage extends WorldImage {
     private color: Color,
   ) {
     super();
+    this.centerOffset = new Posn(width / 2, height / 2);
     this.node = new Konva.Rect({
-      x: 0,
-      y: 0,
       width: this.width - 2,
       height: this.height - 2,
       fill: this.outline === OutlineMode.SOLID ? this.color.toString() : undefined,
@@ -31,7 +31,11 @@ export class RectangleImage extends WorldImage {
   }
 
   getItemsToRender(ctx: RenderContext, position: Posn) {
-    this.node.setPosition(position.toVector());
+    this.node.setPosition(position.minus(this.centerOffset).plus(this.pinhole).toVector());
     return this.node;
+  }
+
+  copy() {
+    return new RectangleImage(this.width, this.height, this.outline, this.color) as this;
   }
 }

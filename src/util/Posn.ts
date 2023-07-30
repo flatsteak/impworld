@@ -4,7 +4,10 @@ export class Posn {
   constructor(
     public x: number,
     public y: number,
-  ) {}
+  ) {
+    this.x = Math.round(x);
+    this.y = Math.round(y);
+  }
 
   equals(other: Posn): boolean {
     return this.x === other.x && this.y === other.y;

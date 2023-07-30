@@ -14,6 +14,17 @@ export class OverlayOffsetAlign extends WorldImage {
     super();
   }
 
+  copy() {
+    return new OverlayOffsetAlign(
+      this.alignModeX,
+      this.alignModeY,
+      this.top,
+      this.dx,
+      this.dy,
+      this.bottom,
+    ) as this;
+  }
+
   size() {
     return new Posn(this.getWidth(), this.getHeight());
   }

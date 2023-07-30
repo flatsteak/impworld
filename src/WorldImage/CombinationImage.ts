@@ -11,12 +11,14 @@ export enum CombinationDirection {
   Overlay,
 }
 
+type WorldImages = [WorldImage, ...WorldImage[]];
+
 export class CombinationImage extends WorldImage {
   constructor(
-    private objects: WorldImage[],
-    private direction: CombinationDirection,
-    private alignX: AlignModeX = AlignModeX.LEFT,
-    private alignY: AlignModeY = AlignModeY.TOP,
+    protected objects: WorldImages,
+    protected direction: CombinationDirection,
+    protected alignX: AlignModeX = AlignModeX.LEFT,
+    protected alignY: AlignModeY = AlignModeY.TOP,
   ) {
     super();
   }
@@ -62,13 +64,24 @@ export class CombinationImage extends WorldImage {
     }
     return group;
   }
-}
 
-type WorldImages = [WorldImage, ...WorldImage[]];
+  copy() {
+    return new CombinationImage(
+      this.objects.map((obj) => obj.copy()) as WorldImages,
+      this.direction,
+      this.alignX,
+      this.alignY,
+    ) as this;
+  }
+}
 
 export class BesideImage extends CombinationImage {
   constructor(...images: WorldImages) {
     super(images, CombinationDirection.LeftToRight);
+  }
+
+  copy() {
+    return new BesideImage(...this.objects) as this;
   }
 }
 
@@ -76,11 +89,19 @@ export class AboveImage extends CombinationImage {
   constructor(...images: WorldImages) {
     super(images, CombinationDirection.TopToBottom);
   }
+
+  copy() {
+    return new AboveImage(...this.objects) as this;
+  }
 }
 
 export class OverlayImage extends CombinationImage {
   constructor(...images: WorldImages) {
     super(images, CombinationDirection.Overlay);
+  }
+
+  copy() {
+    return new OverlayImage(...this.objects) as this;
   }
 }
 
@@ -88,10 +109,18 @@ export class BesideAlignImage extends CombinationImage {
   constructor(alignY: AlignModeY, ...images: WorldImages) {
     super(images, CombinationDirection.LeftToRight, undefined, alignY);
   }
+
+  copy() {
+    return new BesideAlignImage(this.alignY, ...this.objects) as this;
+  }
 }
 
 export class AboveAlignImage extends CombinationImage {
   constructor(alignX: AlignModeX, ...images: WorldImages) {
     super(images, CombinationDirection.LeftToRight, alignX, undefined);
+  }
+
+  copy() {
+    return new AboveAlignImage(this.alignX, ...this.objects) as this;
   }
 }

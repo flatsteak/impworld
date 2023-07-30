@@ -18,12 +18,16 @@
     "@semantic-release/git": "^10.0.1",
     "@typescript-eslint/eslint-plugin": "^6.2.0",
     "@typescript-eslint/parser": "^6.2.0",
+    "canvas": "^2.11.2",
     "coconfig": "^0.13.3",
     "eslint-config-prettier": "^8.9.0",
     "eslint-plugin-import": "^2.28.0",
+    "jsdom": "^22.1.0",
     "prettier": "^3.0.0",
     "tsup": "^7.1.0",
-    "vitest": "^0.33.0"
+    "vite-tsconfig-paths": "^4.2.0",
+    "vitest": "^0.33.0",
+    "vitest-canvas-mock": "^0.3.2"
   },
   "config": {
     "coconfig": "./coconfig.ts"
@@ -35,7 +39,8 @@
     "format": "yarn prettier --write .",
     "lint": "yarn prettier --check .",
     "postinstall": "yarn coconfig",
-    "test": "vitest"
+    "test": "vitest",
+    "typecheck": "tsc --noEmit -p tsconfig.json"
   },
   "keywords": [
     "Northeastern",

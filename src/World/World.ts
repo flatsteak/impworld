@@ -39,7 +39,7 @@ export abstract class World {
     return new WorldScene(this.size);
   }
 
-  bigBang(width: number, height: number, speed: number) {
+  bigBang(width: number, height: number, speed: number = 0) {
     this.stage = new Konva.Stage({
       container: 'world',
       width,
@@ -58,7 +58,7 @@ export abstract class World {
     this.stage.add(this.layer);
 
     this.runTick();
-    if (speed >= 0) {
+    if (speed > 0) {
       this.tickTimer = setInterval(() => this.runTick(), speed * 1000);
     }
   }

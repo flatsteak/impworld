@@ -15,10 +15,8 @@ export class CircleImage extends WorldImage {
   ) {
     super();
     this.node = new Konva.Circle({
-      x: 0,
-      y: 0,
-      radius: this.radius - 1,
-      fill: this.outline === OutlineMode.SOLID ? this.color.toString() : undefined,
+      radius: radius - 1,
+      fill: outline === OutlineMode.SOLID ? this.color.toString() : undefined,
       stroke: this.color.toString(),
       strokeWidth: 1,
     });
@@ -29,7 +27,11 @@ export class CircleImage extends WorldImage {
   }
 
   getItemsToRender(ctx: RenderContext, position: Posn) {
-    this.node.setPosition(position.toVector());
+    this.node.setPosition(position.plus(this.pinhole).toVector());
     return this.node;
+  }
+
+  copy() {
+    return new CircleImage(this.radius, this.outline, this.color) as this;
   }
 }

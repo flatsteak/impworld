@@ -52,6 +52,10 @@ export class TextImage extends WorldImage {
     });
   }
 
+  copy() {
+    return new TextImage(this.text, this.fontSize, this.fontStyle, this.color) as this;
+  }
+
   size() {
     const sz = this.node.measureSize(this.text);
     return new Posn(sz.width, sz.height);

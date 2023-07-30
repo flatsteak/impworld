@@ -45,7 +45,7 @@ class TestWorld extends World {
   makeScene() {
     const scene = this.getEmptyScene();
     scene.placeImageXY(
-      new CircleImage(10, OutlineMode.SOLID, '#FF0000'),
+      new CircleImage(10, OutlineMode.SOLID, new Color('#FF0000')),
       this.position.x,
       this.position.y,
     );
@@ -65,6 +65,11 @@ class TestWorld extends World {
       100,
       100,
     );
+    const rp = new RectangleImage(40, 20, OutlineMode.SOLID, Color.BLACK);
+    const rpp = rp.movePinhole(40, 20);
+    scene.placeImageXY(rp, 0, 0);
+    scene.placeImageXY(rpp, 0, 0);
+    scene.placeImageXY(new CircleImage(40, OutlineMode.OUTLINE, Color.GREEN), 0, 0);
     return scene;
   }
 }
