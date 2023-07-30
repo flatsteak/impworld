@@ -68,6 +68,18 @@ export class Color {
     );
   }
 
+  times(r: number, g?: number, b?: number, a?: number): Color {
+    if (g === undefined && b === undefined && a === undefined) {
+      return this.times(r, r, r, 1);
+    }
+    return new Color(
+      this.getRed() * r,
+      this.getGreen() * (g === undefined ? 1 : g),
+      this.getBlue() * (b === undefined ? 1 : b),
+      this.getAlpha() * (a === undefined ? 1 : a),
+    );
+  }
+
   toString() {
     return this.color;
   }
@@ -80,5 +92,6 @@ export class Color {
   static BLUE = new Color('#0000ff');
   static ORANGE = new Color('#ffa500');
   static YELLOW = new Color('#ffff00');
+  static GRAY = new Color('#808080');
   static LIGHT_GRAY = new Color('#c0c0c0');
 }
