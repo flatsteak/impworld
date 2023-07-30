@@ -1,3 +1,12 @@
+## [1.0.4](https://github.com/flatsteak/impworld/compare/v1.0.3...v1.0.4) (2023-07-30)
+
+
+### Bug Fixes
+
+* **color:** add gray and a utility method ([11dfb06](https://github.com/flatsteak/impworld/commit/11dfb062535b03f0e38b29ec993623bd332f8b66))
+* **color:** round multiplication ([fc03a66](https://github.com/flatsteak/impworld/commit/fc03a668c5ea8e3ce70d4f77f672fd6191feca20))
+* **font:** add font style argument ([594e7bc](https://github.com/flatsteak/impworld/commit/594e7bcf7c78e934290f568abe3cc08cc2b01514))
+
 ## [1.0.3](https://github.com/flatsteak/impworld/compare/v1.0.2...v1.0.3) (2023-07-30)
 
 
