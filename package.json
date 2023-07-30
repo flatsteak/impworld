@@ -11,7 +11,7 @@
   "devDependencies": {
     "@commitlint/cli": "^17.6.7",
     "@commitlint/config-conventional": "^17.6.7",
-    "@openapi-typescript-infra/coconfig": "^3.3.4",
+    "@openapi-typescript-infra/coconfig": "^3.3.5",
     "@playwright/test": "^1.36.2",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/exec": "^6.0.3",

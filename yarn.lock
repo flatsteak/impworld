@@ -554,10 +554,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@openapi-typescript-infra/coconfig@npm:^3.3.4":
-  version: 3.3.4
-  resolution: "@openapi-typescript-infra/coconfig@npm:3.3.4"
-  checksum: 0f0d752421b19ddb9d1a365b1e3d57b6cb6a869b8af38e2f825cb869fe457b872bb2e28b4c537343147a1ff0128ada16a82766017e69f0acb7d512252d2b8ef9
+"@openapi-typescript-infra/coconfig@npm:^3.3.5":
+  version: 3.3.5
+  resolution: "@openapi-typescript-infra/coconfig@npm:3.3.5"
+  checksum: 188c9989fe7f0e39682dfa1f0920e689ef54b3124ab38626941e8650c75f10ae5c58dfcda859bf887e5a041c3ae26aefabe54ced8b1161ed7b83d8fa432b7485
   languageName: node
   linkType: hard
 
@@ -2696,7 +2696,7 @@ __metadata:
   dependencies:
     "@commitlint/cli": ^17.6.7
     "@commitlint/config-conventional": ^17.6.7
-    "@openapi-typescript-infra/coconfig": ^3.3.4
+    "@openapi-typescript-infra/coconfig": ^3.3.5
     "@playwright/test": ^1.36.2
     "@semantic-release/changelog": ^6.0.3
     "@semantic-release/exec": ^6.0.3
