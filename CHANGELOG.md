@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/flatsteak/impworld/compare/v1.0.9...v1.1.0) (2023-07-31)
+
+
+### Features
+
+* **cjs:** move from iife to cjs ([41805f0](https://github.com/flatsteak/impworld/commit/41805f0678e230341301d3de863e8864b88207eb))
+
 ## [1.0.9](https://github.com/flatsteak/impworld/compare/v1.0.8...v1.0.9) (2023-07-31)
 
 
