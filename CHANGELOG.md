@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/flatsteak/impworld/compare/v1.1.0...v1.1.1) (2023-07-31)
+
+
+### Bug Fixes
+
+* **image:** get proper width/height ([e9d4536](https://github.com/flatsteak/impworld/commit/e9d453693d4ad392feb5ea24222fbf868a5a28f7))
+
 # [1.1.0](https://github.com/flatsteak/impworld/compare/v1.0.9...v1.1.0) (2023-07-31)
 
 
