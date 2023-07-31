@@ -6,3 +6,4 @@ export * from './AlignMode';
 export * from './TextImage';
 export * from './OverlayOffsetAlign';
 export * from './transform';
+export * from './FromFileImage';
