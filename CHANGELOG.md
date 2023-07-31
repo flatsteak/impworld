@@ -1,3 +1,10 @@
+## [1.0.9](https://github.com/flatsteak/impworld/compare/v1.0.8...v1.0.9) (2023-07-31)
+
+
+### Bug Fixes
+
+* **image:** add HTML images ([4884102](https://github.com/flatsteak/impworld/commit/4884102592f800d35e592126f1a7870ebe96357a))
+
 ## [1.0.8](https://github.com/flatsteak/impworld/compare/v1.0.7...v1.0.8) (2023-07-30)
 
 
