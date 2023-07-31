@@ -2,8 +2,6 @@ import { RenderContext } from '@/RenderContext';
 import { WorldImage } from '@/WorldImage';
 import { Posn } from '@/util';
 import Konva from 'konva';
-import { Group } from 'konva/lib/Group';
-import { Shape, ShapeConfig } from 'konva/lib/Shape';
 
 export class FromFileImage extends WorldImage {
   private static Metadata: Record<string, HTMLImageElement> = {};
@@ -34,7 +32,7 @@ export class FromFileImage extends WorldImage {
   getItemsToRender(ctx: RenderContext, position: Posn) {
     this.node.setPosition(
       position
-        .moved(-this.node.width / 2, -this.node.height / 2)
+        .moved(-this.node.width() / 2, -this.node.height() / 2)
         .plus(this.pinhole)
         .toVector(),
     );
