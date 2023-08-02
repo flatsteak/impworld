@@ -1,9 +1,10 @@
 import { RenderContext } from '@/RenderContext';
 import { WorldImage } from '@/WorldImage';
 import { Posn } from '@/util';
+import { BBox } from '@/util/BBox';
 import Konva from 'konva';
 
-export class RotateImage extends WorldImage {
+export class RotateImage extends WorldImage<Konva.Group> {
   constructor(
     public readonly image: WorldImage,
     public readonly angle: number,
@@ -15,6 +16,11 @@ export class RotateImage extends WorldImage {
     return new RotateImage(this.image, this.angle) as this;
   }
 
+  bbox() {
+    const tl = this.pinhole.times(-1);
+    return new BBox(tl, tl.plus(this.size()));
+  }
+
   size() {
     // Complicated one. Let's use a rect.
     const imageSize = this.image.size();
@@ -23,9 +29,14 @@ export class RotateImage extends WorldImage {
     return new Posn(rect.width(), rect.height());
   }
 
-  getItemsToRender(ctx: RenderContext, position: Posn) {
-    const image = this.image.getItemsToRender(ctx, Posn.origin);
+  preRender(ctx: RenderContext): void {
+    this.image.preRender(ctx);
+  }
+
+  render(ctx: RenderContext, position: Posn) {
+    const image = this.image.render(ctx, Posn.origin);
     const group = new Konva.Group({});
+    this.node = group;
     group.add(image);
     group.rotate(this.angle);
     const width = group.width();

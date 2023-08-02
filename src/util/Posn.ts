@@ -4,13 +4,14 @@ export class Posn {
   constructor(
     public x: number,
     public y: number,
-  ) {
-    this.x = Math.round(x);
-    this.y = Math.round(y);
-  }
+  ) {}
 
   equals(other: Posn): boolean {
     return this.x === other.x && this.y === other.y;
+  }
+
+  round() {
+    return new Posn(Math.round(this.x), Math.round(this.y));
   }
 
   plus(other: Posn): Posn {
@@ -18,7 +19,7 @@ export class Posn {
   }
 
   minus(other: Posn): Posn {
-    return new Posn(Math.round(this.x - other.x), Math.round(this.y - other.y));
+    return this.moved(-other.x, -other.y);
   }
 
   moved(dx: number, dy: number): Posn {
@@ -26,7 +27,7 @@ export class Posn {
   }
 
   dividedBy(nx: number, ny?: number): Posn {
-    return new Posn(Math.round(this.x / nx), Math.round(this.y / (ny || nx)));
+    return new Posn(this.x / nx, this.y / (ny || nx));
   }
 
   times(mx: number, my?: number): Posn {

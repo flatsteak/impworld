@@ -6,9 +6,10 @@ import { RenderContext } from '@/RenderContext';
 import { Color } from '@/util/Color';
 import { BBox } from '@/util/BBox';
 
-export class CircleImage extends WorldImage<Konva.Circle> {
+export class EllipseImage extends WorldImage<Konva.Ellipse> {
   constructor(
-    private radius: number,
+    private width: number,
+    private height: number,
     private outline: OutlineMode,
     private color: Color,
   ) {
@@ -21,14 +22,15 @@ export class CircleImage extends WorldImage<Konva.Circle> {
   }
 
   size() {
-    return new Posn(this.radius * 2, this.radius * 2);
+    return new Posn(this.width, this.height);
   }
 
   preRender(ctx: RenderContext) {
     this.node =
       this.node ||
-      new Konva.Circle({
-        radius: this.radius,
+      new Konva.Ellipse({
+        radiusX: this.width / 2,
+        radiusY: this.height / 2,
         fill: this.outline === OutlineMode.SOLID ? this.color.toString() : undefined,
         stroke: this.color.toString(),
         strokeWidth: 1,
@@ -37,11 +39,16 @@ export class CircleImage extends WorldImage<Konva.Circle> {
 
   render(ctx: RenderContext, position: Posn) {
     const node = this.getNode();
-    node.setPosition(position.minus(this.pinhole).moved(this.radius, this.radius).toVector());
+    node.setPosition(
+      position
+        .minus(this.pinhole)
+        .moved(this.width / 2, this.height / 2)
+        .toVector(),
+    );
     return node;
   }
 
   copy() {
-    return new CircleImage(this.radius, this.outline, this.color) as this;
+    return new EllipseImage(this.width, this.height, this.outline, this.color) as this;
   }
 }

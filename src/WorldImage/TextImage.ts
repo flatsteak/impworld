@@ -4,6 +4,7 @@ import Konva from 'konva';
 import { OutlineMode } from '@/WorldImage';
 import { RenderContext } from '@/RenderContext';
 import { Color } from '@/util/Color';
+import { BBox } from '@/util/BBox';
 
 export enum FontStyle {
   REGULAR = 'regular',
@@ -12,12 +13,11 @@ export enum FontStyle {
   BOLD_ITALIC = 'bold italic',
 }
 
-export class TextImage extends WorldImage {
+export class TextImage extends WorldImage<Konva.Text> {
   private text: string;
   private color: Color;
   private fontStyle: FontStyle = FontStyle.REGULAR;
   private fontSize: number = 13;
-  private node: Konva.Text;
 
   constructor(
     text: string,
@@ -56,13 +56,22 @@ export class TextImage extends WorldImage {
     return new TextImage(this.text, this.fontSize, this.fontStyle, this.color) as this;
   }
 
+  bbox() {
+    const tl = this.pinhole.times(-1);
+    return new BBox(tl, tl.plus(this.size()));
+  }
+
   size() {
-    const sz = this.node.measureSize(this.text);
+    const sz = this.getNode().measureSize(this.text);
     return new Posn(sz.width, sz.height);
   }
 
-  getItemsToRender(ctx: RenderContext, position: Posn) {
-    this.node.setPosition(position.toVector());
-    return this.node;
+  preRender() {
+    // nothing to do since we needed the node to measure size
+  }
+
+  render(ctx: RenderContext, position: Posn) {
+    this.getNode().setPosition(position.toVector());
+    return this.getNode();
   }
 }

@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+  <head>
+    <title>impworld demo</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #f0f0f0;
+      }
+      .test {
+        background-color: white;
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <script src="dist/index.global.js"></script>
+    <h1>Test Playground</h1>
+
+    <div>
+      <p>
+        This shows a 50x50 rectangle 5 pixels off the origin first bare, then with a BesideImage,
+        then with an AboveImage
+      </p>
+      <div style="display: flex; gap: 5px">
+        <div id="originRect" class="test"></div>
+        <div id="originBeside" class="test"></div>
+        <div id="originAbove" class="test"></div>
+      </div>
+    </div>
+
+    <div>
+      <p>Constructs a combined image with top image overlaid over the bottom image.</p>
+      <div id="overlay" class="test"></div>
+    </div>
+
+    <div>
+      <p>This shows red green and blue rectanges of the same height side by side</p>
+      <div id="beside" class="test"></div>
+    </div>
+
+    <div>
+      <p>This shows red green and blue rectanges of the different heights side by side</p>
+      <div id="besideAlign" class="test"></div>
+    </div>
+
+    <script type="text/javascript">
+      impworld.RunTests();
+    </script>
+  </body>
+</html>

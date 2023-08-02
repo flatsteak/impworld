@@ -1,43 +1,11 @@
 import { RenderContext } from '@/RenderContext';
 import { WorldImage } from '@/WorldImage';
 import { Posn } from '@/util';
+import { BBox } from '@/util/BBox';
 import Konva from 'konva';
 
-export class FromFileImage extends WorldImage {
+export class FromFileImage extends WorldImage<Konva.Image> {
   private static Metadata: Record<string, HTMLImageElement> = {};
-
-  node: Konva.Image;
-
-  constructor(private url: string) {
-    super();
-    const image = FromFileImage.Metadata[url];
-    if (!image) {
-      throw new Error(`Image ${url} not preloaded - you must preload it so we have dimensions`);
-    }
-    this.node = new Konva.Image({
-      image,
-      width: image.width,
-      height: image.height,
-    });
-  }
-
-  copy() {
-    return new FromFileImage(this.url) as this;
-  }
-
-  size() {
-    return new Posn(this.node.width(), this.node.height());
-  }
-
-  getItemsToRender(ctx: RenderContext, position: Posn) {
-    this.node.setPosition(
-      position
-        .moved(-this.node.width() / 2, -this.node.height() / 2)
-        .plus(this.pinhole)
-        .toVector(),
-    );
-    return this.node;
-  }
 
   static async preload(...images: string[]) {
     const promises = images.map((url) => {
@@ -51,5 +19,49 @@ export class FromFileImage extends WorldImage {
       });
     });
     await Promise.all(promises);
+  }
+
+  private image: HTMLImageElement;
+
+  constructor(private url: string) {
+    super();
+    const image = FromFileImage.Metadata[url];
+    if (!image) {
+      throw new Error(`Image ${url} not preloaded - you must preload it so we have dimensions`);
+    }
+    this.image = image;
+  }
+
+  copy() {
+    return new FromFileImage(this.url) as this;
+  }
+
+  bbox() {
+    const tl = this.pinhole.times(-1);
+    return new BBox(tl, tl.plus(this.size()));
+  }
+
+  size() {
+    return new Posn(this.image.width, this.image.height);
+  }
+
+  preRender(ctx: RenderContext): void {
+    this.node =
+      this.node ||
+      new Konva.Image({
+        image: this.image,
+        width: this.image.width,
+        height: this.image.height,
+      });
+  }
+
+  render(ctx: RenderContext, position: Posn) {
+    this.getNode().setPosition(
+      position
+        .moved(-this.image.width / 2, -this.image.height / 2)
+        .minus(this.pinhole)
+        .toVector(),
+    );
+    return this.getNode();
   }
 }

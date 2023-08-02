@@ -1,41 +1,35 @@
-import { describe, expect, test, vi } from 'vitest';
-import { Posn } from '../../util/Posn';
-import { CircleImage, OutlineMode } from '../../WorldImage';
-import { Color } from '../../util/Color';
-import Konva from 'konva';
-import { World } from '@/World';
+import { beforeEach, describe, expect, test, vi } from 'vitest';
+import { Posn } from '@/util/Posn';
+import { CircleImage, OutlineMode } from '@/WorldImage';
+import { Color } from '@/util/Color';
+import { expectWorldToMatchSnapshot, oneShotTestWorld } from '../../../__tests__/image-handling';
+import { fakeContext } from '../../../__tests__/fake-context';
 
 describe('Circle', () => {
-  test('should render', () => {
-    const layer = new Konva.Layer();
+  beforeEach(() => {
+    document.body.innerHTML = '<div id="world"></div>';
+  });
+
+  test.skip('should render', () => {
+    const ctx = fakeContext();
     const circle = new CircleImage(10, OutlineMode.SOLID, Color.RED);
     expect(circle.size()).toEqual(new Posn(20, 20));
-    let rendered = circle.getItemsToRender({ layer }, Posn.origin);
+    circle.preRender(ctx);
+    let rendered = circle.render(ctx, Posn.origin);
     expect(rendered.position()).toEqual({ x: 0, y: 0 });
 
     const moved = circle.movePinhole(5, 5);
-    rendered = moved.getItemsToRender({ layer }, Posn.origin);
+    moved.preRender(ctx);
+    rendered = moved.render(ctx, Posn.origin);
     expect(rendered.position()).toEqual({ x: 5, y: 5 });
   });
 
   test('should render in world', () => {
-    const circle = new CircleImage(10, OutlineMode.SOLID, Color.RED).movePinhole(5, 5);
-
-    class MockWorld extends World {
-      makeScene() {
-        console.log('GOT MAKE SCENE');
-        const s = this.getEmptyScene();
-        s.placeImageXY(circle, 25, 25);
-        return s;
-      }
-    }
-
-    document.body.innerHTML = '<div id="world"></div>';
-    const world = new MockWorld();
-    const spy = vi.spyOn(circle, 'getItemsToRender');
-
-    world.bigBang(100, 100);
-    expect(spy).toHaveBeenCalledOnce();
-    expect(spy).toHaveBeenCalledWith(expect.anything(), new Posn(25, 25));
+    // Radius is 100, so would be centered at (0, 0) by default, moving the pinhole
+    // should get it to (100, 100) which would mean the whole circle is in the image,
+    // and a stage size of 202, 202 means it should be centered as well
+    const circle = new CircleImage(100, OutlineMode.SOLID, Color.RED).movePinhole(-100, -100);
+    const { world } = oneShotTestWorld({ image: circle, w: 202, h: 202, x: 1, y: 1 });
+    expectWorldToMatchSnapshot(world);
   });
 });

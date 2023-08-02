@@ -2,17 +2,18 @@ import Konva from 'konva';
 import { Posn } from '@/util/Posn';
 import { WorldEnd } from '@/World/WorldEnd';
 import { WorldScene } from '@/World/WorldScene';
+import { WorldImage } from '@/WorldImage';
 
 class WorldEndMarker {
-  constructor(private message: string) {}
+  constructor(public message: string) {}
 }
 
 type HandlerResult = void | WorldEndMarker;
 
 export abstract class World {
-  private stage?: Konva.Stage;
-  private layer?: Konva.Layer;
-  private size: Posn = new Posn(1000, 1000);
+  protected stage?: Konva.Stage;
+  protected layer?: Konva.Layer;
+  protected size: Posn = new Posn(1000, 1000);
   private isEndOfWorld = false;
   private tickTimer?: ReturnType<typeof setInterval>;
 
@@ -35,17 +36,19 @@ export abstract class World {
    */
   protected lastScene?: (message: string) => WorldScene;
 
+  public htmlContainerId = 'world';
+
   getEmptyScene() {
     return new WorldScene(this.size);
   }
 
   bigBang(width: number, height: number, speed: number = 0) {
     this.stage = new Konva.Stage({
-      container: 'world',
+      container: this.htmlContainerId,
       width,
       height,
     });
-    document.getElementById('world')?.addEventListener('keydown', (e) => {
+    document.getElementById(this.htmlContainerId)?.addEventListener('keydown', (e) => {
       this.onKeyEvent(e.key);
     });
     this.layer = new Konva.Layer();
@@ -113,4 +116,40 @@ export abstract class World {
    * a scene for the current state.
    */
   abstract makeScene(): WorldScene;
+}
+
+export function oneShotWorld({
+  htmlContainerId,
+  getImage,
+  width,
+  height,
+}: {
+  htmlContainerId?: string;
+  getImage: () => WorldImage;
+  width?: number;
+  height?: number;
+}) {
+  class OneShotWorld extends World {
+    constructor() {
+      super();
+      if (htmlContainerId) {
+        this.htmlContainerId = htmlContainerId;
+      }
+    }
+
+    makeScene() {
+      const image = getImage();
+      const scene = this.getEmptyScene();
+      scene.placeImageXY(image, 0, 0);
+      return scene;
+    }
+  }
+
+  const world = new OneShotWorld();
+  const element = document.getElementById(world.htmlContainerId);
+  if (element && width && height) {
+    element.style.height = `${height}px`;
+    element.style.width = `${width}px`;
+  }
+  world.bigBang(width || element?.clientWidth || 500, height || element?.clientHeight || 500);
 }

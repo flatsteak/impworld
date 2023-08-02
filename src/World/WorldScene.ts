@@ -14,11 +14,14 @@ export class WorldScene {
 
   placeImageXY(image: WorldImage, x: number, y: number) {
     this.images.push({ image, position: new Posn(x, y) });
+    return this;
   }
 
   draw(layer: Konva.Layer) {
+    const context = { layer };
     this.images.forEach(({ image, position }) => {
-      const item = image.getItemsToRender({ layer }, position);
+      image.preRender(context);
+      const item = image.render(context, position);
       layer.add(item);
     });
   }
