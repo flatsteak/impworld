@@ -1,8 +1,10 @@
 import { beforeEach, describe, expect, test } from 'vitest';
+
+import { expectWorldToMatchSnapshot, oneShotTestWorld } from '../../../__tests__/image-handling';
+
 import { Posn } from '@/util/Posn';
 import { Color } from '@/util/Color';
 import { OutlineMode, RectangleImage } from '@/WorldImage';
-import { expectWorldToMatchSnapshot, oneShotTestWorld } from '../../../__tests__/image-handling';
 import { BBox } from '@/util/BBox';
 
 describe('Rectangle', () => {
@@ -16,8 +18,8 @@ describe('Rectangle', () => {
     // and a stage size of 202, 202 means it should be centered as well
     const rect = new RectangleImage(100, 50, OutlineMode.SOLID, Color.RED).movePinhole(-50, -25);
     expect(rect.size()).toEqual(new Posn(100, 50));
-    expect(rect.bbox().equals(new BBox(new Posn(0, 0), new Posn(100, 50)))).toBeTruthy();
-    const { world } = oneShotTestWorld({ image: rect, w: 102, h: 52, x: 1, y: 1 });
+    expect(rect.bbox().toString()).toEqual('[(-50, -25):(50, 25)]');
+    const { world } = oneShotTestWorld({ image: rect, w: 110, h: 60, x: 5, y: 5 });
     expectWorldToMatchSnapshot(world);
   });
 });

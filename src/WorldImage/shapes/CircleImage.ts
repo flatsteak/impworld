@@ -1,6 +1,7 @@
+import Konva from 'konva';
+
 import { WorldImage } from '@/WorldImage/WorldImage';
 import { Posn } from '@/util/Posn';
-import Konva from 'konva';
 import { OutlineMode } from '@/WorldImage';
 import { RenderContext } from '@/RenderContext';
 import { Color } from '@/util/Color';
@@ -16,15 +17,15 @@ export class CircleImage extends WorldImage<Konva.Circle> {
   }
 
   bbox() {
-    const tl = this.pinhole.times(-1);
-    return new BBox(tl, tl.plus(this.size()));
+    const r = this.radius;
+    return new BBox(new Posn(-r, -r), new Posn(r, r));
   }
 
   size() {
     return new Posn(this.radius * 2, this.radius * 2);
   }
 
-  preRender(ctx: RenderContext) {
+  preRender() {
     this.node =
       this.node ||
       new Konva.Circle({
@@ -37,7 +38,8 @@ export class CircleImage extends WorldImage<Konva.Circle> {
 
   render(ctx: RenderContext, position: Posn) {
     const node = this.getNode();
-    node.setPosition(position.minus(this.pinhole).moved(this.radius, this.radius).toVector());
+    const center = position.minus(this.pinhole);
+    node.setPosition(center.toVector());
     return node;
   }
 

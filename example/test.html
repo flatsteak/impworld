@@ -6,7 +6,7 @@
       body {
         margin: 0;
         padding: 0;
-        overflow: hidden;
+        overflow: scroll;
         background-color: #f0f0f0;
       }
       .test {
@@ -21,10 +21,11 @@
 
     <div>
       <p>
-        This shows a 50x50 rectangle 5 pixels off the origin first bare, then with a BesideImage,
-        then with an AboveImage
+        This shows a circle with radius 50, then a 100x100 rectangle 5 pixels off the origin first
+        bare, then with a BesideImage, then with an AboveImage
       </p>
       <div style="display: flex; gap: 5px">
+        <div id="originCircle" class="test"></div>
         <div id="originRect" class="test"></div>
         <div id="originBeside" class="test"></div>
         <div id="originAbove" class="test"></div>
@@ -32,7 +33,7 @@
     </div>
 
     <div>
-      <p>Constructs a combined image with top image overlaid over the bottom image.</p>
+      <p>Constructs a combined image with top image overlayed over the bottom image.</p>
       <div id="overlay" class="test"></div>
     </div>
 

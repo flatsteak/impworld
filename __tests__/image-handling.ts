@@ -1,5 +1,6 @@
 import { SpyInstance, expect, vi } from 'vitest';
 import { toMatchImageSnapshot } from 'jest-image-snapshot';
+
 import { World } from '@/World';
 import { OutlineMode, RectangleImage, WorldImage } from '@/WorldImage';
 import { Color } from '@/util';

@@ -4,7 +4,15 @@ export class Posn {
   constructor(
     public x: number,
     public y: number,
-  ) {}
+  ) {
+    // This is to get around weirdness with -0 and +0
+    if (x === 0) {
+      this.x = 0;
+    }
+    if (y === 0) {
+      this.y = 0;
+    }
+  }
 
   equals(other: Posn): boolean {
     return this.x === other.x && this.y === other.y;

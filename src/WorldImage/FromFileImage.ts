@@ -1,8 +1,9 @@
+import Konva from 'konva';
+
 import { RenderContext } from '@/RenderContext';
 import { WorldImage } from '@/WorldImage';
 import { Posn } from '@/util';
 import { BBox } from '@/util/BBox';
-import Konva from 'konva';
 
 export class FromFileImage extends WorldImage<Konva.Image> {
   private static Metadata: Record<string, HTMLImageElement> = {};

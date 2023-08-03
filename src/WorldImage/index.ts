@@ -6,3 +6,4 @@ export * from './TextImage';
 export * from './combination';
 export * from './transform';
 export * from './FromFileImage';
+export * from './EmptyImage';

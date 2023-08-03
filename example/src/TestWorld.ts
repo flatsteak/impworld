@@ -15,7 +15,7 @@ export class TestWorld extends World {
   tickCount = 0;
   position = new Posn(0, 0);
   direction = new Posn(1, 1);
-  delta = new Posn(Math.round(Math.random() * 10), Math.round(Math.random() * 10));
+  delta = new Posn(Math.random(), Math.random() * 10);
 
   constructor(public gameSize: Posn) {
     super();

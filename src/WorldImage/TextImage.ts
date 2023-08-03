@@ -1,6 +1,7 @@
+import Konva from 'konva';
+
 import { WorldImage } from '@/WorldImage/WorldImage';
 import { Posn } from '@/util/Posn';
-import Konva from 'konva';
 import { OutlineMode } from '@/WorldImage';
 import { RenderContext } from '@/RenderContext';
 import { Color } from '@/util/Color';

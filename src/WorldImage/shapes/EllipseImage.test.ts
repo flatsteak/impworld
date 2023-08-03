@@ -1,9 +1,11 @@
 import { beforeEach, describe, expect, test, vi } from 'vitest';
-import { Posn } from '@/util/Posn';
-import { CircleImage, EllipseImage, OutlineMode } from '@/WorldImage';
-import { Color } from '@/util/Color';
+
 import { expectWorldToMatchSnapshot, oneShotTestWorld } from '../../../__tests__/image-handling';
 import { fakeContext } from '../../../__tests__/fake-context';
+
+import { Posn } from '@/util/Posn';
+import { EllipseImage, OutlineMode } from '@/WorldImage';
+import { Color } from '@/util/Color';
 
 describe('Ellipse', () => {
   beforeEach(() => {
@@ -14,12 +16,12 @@ describe('Ellipse', () => {
     const ctx = fakeContext();
     const ellipse = new EllipseImage(30, 60, OutlineMode.SOLID, Color.RED);
     expect(ellipse.size()).toEqual(new Posn(30, 60));
-    ellipse.preRender(ctx);
+    ellipse.preRender();
     let rendered = ellipse.render(ctx, Posn.origin);
     expect(rendered.position()).toEqual({ x: 0, y: 0 });
 
     const moved = ellipse.movePinhole(5, 5);
-    moved.preRender(ctx);
+    moved.preRender();
     rendered = moved.render(ctx, Posn.origin);
     expect(rendered.position()).toEqual({ x: 5, y: 5 });
   });

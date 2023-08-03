@@ -1,6 +1,7 @@
+import Konva from 'konva';
+
 import { Posn } from '@/util/Posn';
 import { WorldImage } from '@/WorldImage';
-import Konva from 'konva';
 
 interface PlacedImage {
   image: WorldImage;

@@ -26,4 +26,8 @@ export class BBox {
   size() {
     return this.bottomRight.minus(this.topLeft);
   }
+
+  toString() {
+    return `[${this.topLeft}:${this.bottomRight}]`;
+  }
 }

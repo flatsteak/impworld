@@ -105,7 +105,7 @@ function ttbPositions(objects: WorldImage[], alignX: AlignModeX) {
 }
 
 function overlayPositions(objects: WorldImage[], alignX: AlignModeX, alignY: AlignModeY) {
-  let spot = Posn.origin;
+  const spot = Posn.origin;
   const positions: Posn[] = [];
   for (const obj of objects) {
     positions.push(obj.size());

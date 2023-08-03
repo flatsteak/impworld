@@ -1,6 +1,7 @@
+import Konva from 'konva';
+
 import { WorldImage } from '@/WorldImage/WorldImage';
 import { Posn } from '@/util/Posn';
-import Konva from 'konva';
 import { OutlineMode } from '@/WorldImage';
 import { RenderContext } from '@/RenderContext';
 import { Color } from '@/util/Color';
@@ -25,7 +26,7 @@ export class EllipseImage extends WorldImage<Konva.Ellipse> {
     return new Posn(this.width, this.height);
   }
 
-  preRender(ctx: RenderContext) {
+  preRender() {
     this.node =
       this.node ||
       new Konva.Ellipse({
@@ -39,12 +40,7 @@ export class EllipseImage extends WorldImage<Konva.Ellipse> {
 
   render(ctx: RenderContext, position: Posn) {
     const node = this.getNode();
-    node.setPosition(
-      position
-        .minus(this.pinhole)
-        .moved(this.width / 2, this.height / 2)
-        .toVector(),
-    );
+    node.setPosition(position.minus(this.pinhole).toVector());
     return node;
   }
 

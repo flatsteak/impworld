@@ -1,4 +1,5 @@
 import Konva from 'konva';
+
 import { Posn } from '@/util/Posn';
 import { RenderContext } from '@/RenderContext';
 import { BBox } from '@/util/BBox';
@@ -7,12 +8,18 @@ type ValidChild = Konva.Shape | Konva.Group;
 
 export abstract class WorldImage<T extends ValidChild = ValidChild> {
   protected node?: T;
-  private _pinhole?: Posn;
+  private _pinhole = Posn.origin;
 
   constructor() {}
 
+  /**
+   * OMG pinholes. So, a pinhole value of 0,0 means that the pinhole is in the
+   * CENTER of the image. So the pinhole is a relative coordinate (to the center)
+   * not an absolute coordinate (which one would typically consider top left in
+   * the graphics world)
+   */
   public get pinhole() {
-    return this._pinhole || this.size().dividedBy(2);
+    return this._pinhole;
   }
 
   protected set pinhole(pinhole: Posn) {
