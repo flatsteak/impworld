@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import Konva from 'konva';
 
 import { Posn } from '@/util/Posn';
