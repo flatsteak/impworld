@@ -144,6 +144,30 @@ export class OverlayImage extends OverlayOffsetAlignBase {
   }
 }
 
+export class OverlayOffsetAlign extends OverlayOffsetAlignBase {
+  constructor(
+    alignX: AlignModeX,
+    alignY: AlignModeY,
+    top: WorldImage,
+    dx: number,
+    dy: number,
+    bottom: WorldImage,
+  ) {
+    super(alignX, alignY, top, dx, dy, bottom);
+  }
+
+  copy() {
+    return new OverlayOffsetAlign(
+      this.alignX,
+      this.alignY,
+      this.top,
+      this.dx,
+      this.dy,
+      this.bot,
+    ) as this;
+  }
+}
+
 export class BesideImage extends OverlayOffsetAlignBase {
   constructor(left: WorldImage, right: WorldImage = new EmptyImage(), ...rest: WorldImage[]) {
     const rightFolded =
