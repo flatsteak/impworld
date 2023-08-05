@@ -60,8 +60,7 @@ export class TextImage extends WorldImage<Konva.Text> {
   }
 
   getReusableIds(): string[] {
-    // Not yet.
-    return [];
+    return [this.text];
   }
 
   bbox() {
@@ -73,10 +72,14 @@ export class TextImage extends WorldImage<Konva.Text> {
     return this._size;
   }
 
-  createNode(): Text {
-    return new Konva.Text({
-      align: 'left',
-    });
+  createNode(ctx: RenderContext): Text {
+    const node = ctx.previousNodeCache?.getReusableNode(Konva.Text, this.getReusableIds());
+    return (
+      node ||
+      new Konva.Text({
+        align: 'left',
+      })
+    );
   }
 
   render(ctx: RenderContext, node: Text, position: Posn): void {

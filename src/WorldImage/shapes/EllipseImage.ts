@@ -32,12 +32,16 @@ export class EllipseImage extends WorldImage<Konva.Ellipse> {
     return [`${this.width}-${this.height}-${this.outline}`, `${this.width}-${this.height}`, 'any'];
   }
 
-  createNode() {
-    return new Konva.Ellipse({
-      radiusX: this.width / 2,
-      radiusY: this.height / 2,
-      strokeWidth: 1,
-    });
+  createNode(ctx: RenderContext) {
+    const node = ctx.previousNodeCache?.getReusableNode(Konva.Ellipse, this.getReusableIds());
+    return (
+      node ||
+      new Konva.Ellipse({
+        radiusX: this.width / 2,
+        radiusY: this.height / 2,
+        strokeWidth: 1,
+      })
+    );
   }
 
   render(ctx: RenderContext, node: Konva.Ellipse, position: Posn) {

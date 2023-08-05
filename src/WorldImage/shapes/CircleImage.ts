@@ -31,10 +31,14 @@ export class CircleImage extends WorldImage<Konva.Circle> {
     return [`${this.radius}-${this.outline}`, `${this.radius}`, 'any'];
   }
 
-  createNode() {
-    return new Konva.Circle({
-      strokeWidth: 1,
-    });
+  createNode(ctx: RenderContext) {
+    const node = ctx.previousNodeCache?.getReusableNode(Konva.Circle, this.getReusableIds());
+    return (
+      node ||
+      new Konva.Circle({
+        strokeWidth: 1,
+      })
+    );
   }
 
   render(ctx: RenderContext, node: Konva.Circle, position: Posn) {

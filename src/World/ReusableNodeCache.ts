@@ -1,6 +1,7 @@
 import { ValidRenderNode } from '../WorldImage/WorldImage';
 
 export class ReusableNodeCache {
+  private allNodes = new Set<ValidRenderNode>();
   private cache = new Map<string, Map<string, ValidRenderNode[]>>();
 
   getReusableNode<T extends ValidRenderNode>(type: new () => T, ids: string[]): T | undefined {
@@ -12,14 +13,29 @@ export class ReusableNodeCache {
       if (typeCache.has(id)) {
         const node = typeCache.get(id);
         if (node?.length) {
-          return node.shift() as T;
+          const reused = node.shift() as T;
+          this.allNodes.delete(reused);
+          return reused;
         }
       }
     }
     return undefined;
   }
 
+  forEachNode(fn: (node: ValidRenderNode) => void) {
+    this.allNodes.forEach((node) => {
+      fn(node);
+    });
+  }
+
+  clear() {
+    this.allNodes.clear();
+    this.cache.clear();
+  }
+
   addNode(ids: string[], node: ValidRenderNode) {
+    this.allNodes.add(node);
+
     if (!ids?.length) {
       return;
     }

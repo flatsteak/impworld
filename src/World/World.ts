@@ -53,7 +53,7 @@ export abstract class World {
       width,
       height,
     });
-    document.getElementById(this.htmlContainerId)?.addEventListener('keydown', (e) => {
+    window.addEventListener('keydown', (e) => {
       this.onKeyEvent(e.key);
     });
     this.layer = new Konva.Layer();
@@ -75,7 +75,6 @@ export abstract class World {
     if (!this.layer) {
       throw new Error('Layer not initialized');
     }
-    this.layer.removeChildren();
 
     const result = this.onTick();
     if (result instanceof WorldEndMarker) {
@@ -86,7 +85,12 @@ export abstract class World {
     if (!scene) {
       throw new Error('makeScene did not return a scene');
     }
+    const currentNodeCache = this.renderedNodes;
     this.renderedNodes = scene.draw(this.layer, this.renderedNodes);
+    currentNodeCache?.forEachNode((node) => {
+      node.destroy();
+    });
+    currentNodeCache?.clear();
   }
 
   private endTheWorld() {
@@ -94,7 +98,7 @@ export abstract class World {
       console.log('The world has ended');
       clearInterval(this.tickTimer);
       this.tickTimer = undefined;
-      this.stage?.removeChildren();
+      // this.stage?.removeChildren();
     }
   }
 

@@ -12,13 +12,15 @@ import {
 } from '../../src/index';
 
 export class TestWorld extends World {
+  gameSize: Posn;
   tickCount = 0;
   position = new Posn(0, 0);
   direction = new Posn(1, 1);
-  delta = new Posn(Math.random(), Math.random() * 10);
+  delta = new Posn(Math.random() * 10, Math.random() * 10);
 
-  constructor(public gameSize: Posn) {
+  constructor(w: number, h: number) {
     super();
+    this.gameSize = new Posn(w, h);
   }
 
   move() {
@@ -26,6 +28,20 @@ export class TestWorld extends World {
       this.delta.x * this.direction.x,
       this.delta.y * this.direction.y,
     );
+  }
+
+  protected onKeyEvent(key: string) {
+    if (key === 'ArrowLeft') {
+      this.direction = new Posn(-1, this.direction.y);
+    } else if (key === 'ArrowRight') {
+      this.direction = new Posn(1, this.direction.y);
+    } else if (key === 'ArrowUp') {
+      this.direction = new Posn(this.direction.x, -1);
+    } else if (key === 'ArrowDown') {
+      this.direction = new Posn(this.direction.x, 1);
+    } else if (key === 'r') {
+      this.delta = new Posn(Math.random() * 10, Math.random() * 10);
+    }
   }
 
   onTick() {
@@ -38,8 +54,8 @@ export class TestWorld extends World {
       this.direction = this.direction.times(1, -1);
     }
     this.move();
-    if (this.tickCount === 1000) {
-      return this.endOfWorld('1000 ticks are complete, game ends.');
+    if (this.tickCount === 10000) {
+      return this.endOfWorld(`${this.tickCount} ticks are complete, game ends.`);
     }
   }
 

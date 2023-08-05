@@ -29,15 +29,19 @@ export class RectangleImage extends WorldImage<Konva.Rect> {
   }
 
   getReusableIds(): string[] {
-    return [];
+    return [`${this.width}-${this.height}-${this.outline}`, `${this.width}-${this.height}`, 'any'];
   }
 
-  createNode() {
-    return new Konva.Rect({
-      width: this.width,
-      height: this.height,
-      strokeWidth: 1,
-    });
+  createNode(ctx: RenderContext) {
+    const node = ctx.previousNodeCache?.getReusableNode(Konva.Rect, this.getReusableIds());
+    return (
+      node ||
+      new Konva.Rect({
+        width: this.width,
+        height: this.height,
+        strokeWidth: 1,
+      })
+    );
   }
 
   render(ctx: RenderContext, node: Konva.Rect, position: Posn) {

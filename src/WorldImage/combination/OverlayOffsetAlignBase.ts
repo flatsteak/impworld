@@ -106,6 +106,8 @@ export class OverlayOffsetAlignBase extends WorldImage<Konva.Group> {
   createNode(ctx: RenderContext) {
     const top = this.top.createNode(ctx);
     const bottom = this.bot.createNode(ctx);
+    ctx.nextNodeCache.addNode(this.top.getReusableIds(), top);
+    ctx.nextNodeCache.addNode(this.bot.getReusableIds(), bottom);
     const group = new Konva.Group({});
     group.add(bottom);
     group.add(top);

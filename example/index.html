@@ -20,7 +20,7 @@
     </div>
     <script src="dist/index.global.js"></script>
     <script type="text/javascript">
-      const world = new TestWorld(new Posn(window.innerWidth, window.innerHeight));
+      const world = new window.impworld.TestWorld(window.innerWidth, window.innerHeight);
       world.bigBang(world.gameSize.x, world.gameSize.y, 0.01);
       console.log('The world has started');
     </script>
