@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/flatsteak/impworld/compare/v1.1.3...v1.2.0) (2023-08-05)
+
+
+### Features
+
+* **cache:** rework image handling to handle reuse properly ([b405971](https://github.com/flatsteak/impworld/commit/b4059719870e8a0c3330fdd94969066c2ce148bf))
+
 ## [1.1.3](https://github.com/flatsteak/impworld/compare/v1.1.2...v1.1.3) (2023-08-05)
 
 
