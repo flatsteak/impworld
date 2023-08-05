@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/flatsteak/impworld/compare/v1.2.0...v1.2.1) (2023-08-05)
+
+
+### Bug Fixes
+
+* **positioning:** fix multiple image alignment ([1fc09cf](https://github.com/flatsteak/impworld/commit/1fc09cf085a1ddf1a7f5480aef7f0a6d8f91d121))
+
 # [1.2.0](https://github.com/flatsteak/impworld/compare/v1.1.3...v1.2.0) (2023-08-05)
 
 
