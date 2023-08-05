@@ -50,4 +50,16 @@ describe('OverlayOffsetAlignBase', () => {
     const { world } = oneShotTestWorld({ image: beside, w: 160, h: 60 });
     expectWorldToMatchSnapshot(world);
   });
+
+  test('Beside six images', () => {
+    const r1 = new RectangleImage(50, 50, OutlineMode.SOLID, Color.BLACK);
+    const r2 = new RectangleImage(50, 50, OutlineMode.SOLID, Color.BLACK.add(40));
+    const r3 = new RectangleImage(50, 50, OutlineMode.SOLID, Color.BLACK.add(80));
+    const r4 = new RectangleImage(50, 50, OutlineMode.SOLID, Color.BLACK.add(120));
+    const r5 = new RectangleImage(50, 50, OutlineMode.SOLID, Color.BLACK.add(160));
+    const r6 = new RectangleImage(50, 50, OutlineMode.SOLID, Color.BLACK.add(200));
+    const beside = new BesideImage(r1, r2, r3, r4, r5, r6).movePinhole(-160, -30);
+    const { world } = oneShotTestWorld({ image: beside, w: 320, h: 60 });
+    expectWorldToMatchSnapshot(world);
+  });
 });

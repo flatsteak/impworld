@@ -66,6 +66,19 @@ const tests = {
     width: 160,
     height: 60,
   },
+  besideReused: {
+    getImage() {
+      const r1 = new RectangleImage(50, 50, OutlineMode.SOLID, Color.BLACK);
+      const r2 = new RectangleImage(50, 50, OutlineMode.SOLID, Color.BLACK.add(40));
+      const r3 = new RectangleImage(50, 50, OutlineMode.SOLID, Color.BLACK.add(80));
+      const r4 = new RectangleImage(50, 50, OutlineMode.SOLID, Color.BLACK.add(120));
+      const r5 = new RectangleImage(50, 50, OutlineMode.SOLID, Color.BLACK.add(160));
+      const r6 = new RectangleImage(50, 50, OutlineMode.SOLID, Color.BLACK.add(200));
+      return new BesideImage(r1, r2, r3, r4, r5, r6).movePinhole(-160, -30);
+    },
+    width: 320,
+    height: 60,
+  },
   besideAlign: {
     getImage() {
       const r1 = new RectangleImage(50, 150, OutlineMode.OUTLINE, Color.RED);

@@ -43,7 +43,7 @@ export class BesideImage extends OverlayOffsetAlignBase {
         : right || new EmptyImage();
     const sz1 = left.size();
     const sz2 = rightFolded.size();
-    super(AlignModeX.PINHOLE, AlignModeY.PINHOLE, left, sz1.x / 2 + sz2.x / 2, 0, rightFolded);
+    super(AlignModeX.PINHOLE, AlignModeY.PINHOLE, left, sz1.x / 2 + sz2.x / 2 + 1, 0, rightFolded);
   }
 
   copy() {
@@ -59,7 +59,7 @@ export class AboveImage extends OverlayOffsetAlignBase {
         : bottom || new EmptyImage();
     const sz1 = top.size();
     const sz2 = bottomFolded.size();
-    super(AlignModeX.PINHOLE, AlignModeY.PINHOLE, top, 0, sz1.y / 2 + sz2.y / 2, bottomFolded);
+    super(AlignModeX.PINHOLE, AlignModeY.PINHOLE, top, 0, sz1.y / 2 + sz2.y / 2 + 1, bottomFolded);
   }
 
   copy() {
@@ -80,7 +80,7 @@ export class BesideAlignImage extends OverlayOffsetAlignBase {
         : right || new EmptyImage();
     const sz1 = left.size();
     const sz2 = rightFolded.size();
-    super(AlignModeX.PINHOLE, alignY, left, sz1.x / 2 + sz2.x / 2, 0, rightFolded);
+    super(AlignModeX.PINHOLE, alignY, left, sz1.x / 2 + sz2.x / 2 + 1, 0, rightFolded);
   }
 
   copy() {
@@ -96,7 +96,7 @@ export class AboveAlignImage extends OverlayOffsetAlignBase {
         : bottom || new EmptyImage();
     const sz1 = top.size();
     const sz2 = bottomFolded.size();
-    super(alignX, AlignModeY.PINHOLE, top, 0, sz1.y / 2 + sz2.y / 2, bottomFolded);
+    super(alignX, AlignModeY.PINHOLE, top, 0, sz1.y / 2 + sz2.y / 2 + 1, bottomFolded);
   }
 
   copy() {

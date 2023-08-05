@@ -9,6 +9,7 @@ import { RenderContext } from '@/RenderContext';
 import { BBox } from '@/util/BBox';
 
 export class OverlayOffsetAlignBase extends WorldImage<Konva.Group> {
+  private _size: Posn | undefined;
   private boundingBox: BBox;
   private deltaBot: Posn;
   private deltaTop: Posn;
@@ -120,15 +121,7 @@ export class OverlayOffsetAlignBase extends WorldImage<Konva.Group> {
   }
 
   size() {
-    const { x: botWidth, y: botHeight } = this.bot.size();
-    const { x: topWidth, y: topHeight } = this.top.size();
-    const botStart = this.deltaBot;
-    const topStart = this.deltaTop;
-    const leftX = Math.min(botStart.x, topStart.x);
-    const rightX = Math.max(botStart.x + botWidth, topStart.x + topWidth);
-    const topY = Math.min(botStart.y, topStart.y);
-    const bottomY = Math.max(botStart.y + botHeight, topStart.y + topHeight);
-    return new Posn(rightX - leftX, bottomY - topY);
+    return this.bbox().size();
   }
 
   copy(): this {

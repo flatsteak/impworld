@@ -39,13 +39,26 @@ export class Color {
     return parseInt(alpha, 16);
   }
 
-  brighter(): Color {
+  withAlpha(a: number) {
+    return new Color(this.getRed(), this.getGreen(), this.getBlue(), a);
+  }
+
+  add(r: number, g?: number, b?: number) {
+    return new Color(
+      this.getRed() + r,
+      this.getGreen() + (g === undefined ? r : g),
+      this.getBlue() + (b === undefined ? r : b),
+      this.getAlpha(),
+    );
+  }
+
+  brighter(by = FACTOR): Color {
     let r: number = this.getRed();
     let g: number = this.getGreen();
     let b: number = this.getBlue();
     const alpha: number = this.getAlpha();
 
-    const i: number = Math.floor(1.0 / (1.0 - FACTOR));
+    const i: number = Math.floor(1.0 / (1.0 - by));
 
     if (r === 0 && g === 0 && b === 0) {
       return new Color(i, i, i, alpha);
@@ -61,9 +74,9 @@ export class Color {
     }
 
     return new Color(
-      Math.min(Math.floor(r / FACTOR), 255),
-      Math.min(Math.floor(g / FACTOR), 255),
-      Math.min(Math.floor(b / FACTOR), 255),
+      Math.min(Math.floor(r / by), 255),
+      Math.min(Math.floor(g / by), 255),
+      Math.min(Math.floor(b / by), 255),
       alpha,
     );
   }
