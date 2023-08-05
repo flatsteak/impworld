@@ -1,6 +1,6 @@
 {
   "name": "impworld",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "A Typescript/HTML port of Northeastern's impworld learning library for simple game construction",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

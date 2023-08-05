@@ -1,3 +1,10 @@
+## [1.2.2](https://github.com/flatsteak/impworld/compare/v1.2.1...v1.2.2) (2023-08-05)
+
+
+### Bug Fixes
+
+* **reuse:** reuse nodes ([e7569f9](https://github.com/flatsteak/impworld/commit/e7569f9bfabed5e94bc1c9abf0915a4d40074dcb))
+
 ## [1.2.1](https://github.com/flatsteak/impworld/compare/v1.2.0...v1.2.1) (2023-08-05)
 
 
