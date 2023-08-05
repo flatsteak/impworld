@@ -1,7 +1,12 @@
 import Konva from 'konva';
 
-export function fakeContext() {
+import { RenderContext } from '@/RenderContext';
+import { ReusableNodeCache } from '@/World/ReusableNodeCache';
+
+export function fakeContext(): RenderContext {
   return {
     layer: {} as Konva.Layer,
+    previousNodeCache: new ReusableNodeCache(),
+    nextNodeCache: new ReusableNodeCache(),
   };
 }

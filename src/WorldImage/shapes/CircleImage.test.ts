@@ -16,14 +16,14 @@ describe('Circle', () => {
     const ctx = fakeContext();
     const circle = new CircleImage(10, OutlineMode.SOLID, Color.RED);
     expect(circle.size()).toEqual(new Posn(20, 20));
-    circle.preRender();
-    let rendered = circle.render(ctx, Posn.origin);
-    expect(rendered.position()).toEqual({ x: 0, y: 0 });
+    let node = circle.createNode(ctx);
+    circle.render(ctx, node, Posn.origin);
+    expect(node.position()).toEqual({ x: 0, y: 0 });
 
     const moved = circle.movePinhole(5, 5);
-    moved.preRender();
-    rendered = moved.render(ctx, Posn.origin);
-    expect(rendered.position()).toEqual({ x: 5, y: 5 });
+    node = moved.createNode(ctx);
+    moved.render(ctx, node, Posn.origin);
+    expect(node.position()).toEqual({ x: 5, y: 5 });
   });
 
   test('should render in world', () => {

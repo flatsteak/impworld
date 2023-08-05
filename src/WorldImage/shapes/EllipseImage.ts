@@ -1,5 +1,7 @@
 import Konva from 'konva';
 
+import { setFillAndStroke } from '../node-utils';
+
 import { WorldImage } from '@/WorldImage/WorldImage';
 import { Posn } from '@/util/Posn';
 import { OutlineMode } from '@/WorldImage';
@@ -26,22 +28,23 @@ export class EllipseImage extends WorldImage<Konva.Ellipse> {
     return new Posn(this.width, this.height);
   }
 
-  preRender() {
-    this.node =
-      this.node ||
-      new Konva.Ellipse({
-        radiusX: this.width / 2,
-        radiusY: this.height / 2,
-        fill: this.outline === OutlineMode.SOLID ? this.color.toString() : undefined,
-        stroke: this.color.toString(),
-        strokeWidth: 1,
-      });
+  getReusableIds(): string[] {
+    return [`${this.width}-${this.height}-${this.outline}`, `${this.width}-${this.height}`, 'any'];
   }
 
-  render(ctx: RenderContext, position: Posn) {
-    const node = this.getNode();
+  createNode() {
+    return new Konva.Ellipse({
+      radiusX: this.width / 2,
+      radiusY: this.height / 2,
+      strokeWidth: 1,
+    });
+  }
+
+  render(ctx: RenderContext, node: Konva.Ellipse, position: Posn) {
+    node.radiusX(this.width / 2);
+    node.radiusY(this.height / 2);
+    setFillAndStroke(node, this.outline, this.color);
     node.setPosition(position.minus(this.pinhole).toVector());
-    return node;
   }
 
   copy() {

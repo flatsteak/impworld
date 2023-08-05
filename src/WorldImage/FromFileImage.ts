@@ -46,23 +46,24 @@ export class FromFileImage extends WorldImage<Konva.Image> {
     return new Posn(this.image.width, this.image.height);
   }
 
-  preRender(): void {
-    this.node =
-      this.node ||
-      new Konva.Image({
-        image: this.image,
-        width: this.image.width,
-        height: this.image.height,
-      });
+  getReusableIds(): string[] {
+    return [this.url];
   }
 
-  render(ctx: RenderContext, position: Posn) {
-    this.getNode().setPosition(
+  createNode(): Konva.Image {
+    return new Konva.Image({
+      image: this.image,
+      width: this.image.width,
+      height: this.image.height,
+    });
+  }
+
+  render(ctx: RenderContext, node: Konva.Image, position: Posn) {
+    node.setPosition(
       position
         .moved(-this.image.width / 2, -this.image.height / 2)
         .minus(this.pinhole)
         .toVector(),
     );
-    return this.getNode();
   }
 }

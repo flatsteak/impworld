@@ -1,7 +1,10 @@
 import Konva from 'konva';
 
+import { ReusableNodeCache } from './ReusableNodeCache';
+
 import { Posn } from '@/util/Posn';
 import { WorldImage } from '@/WorldImage';
+import { RenderContext } from '@/RenderContext';
 
 interface PlacedImage {
   image: WorldImage;
@@ -18,12 +21,21 @@ export class WorldScene {
     return this;
   }
 
-  draw(layer: Konva.Layer) {
-    const context = { layer };
+  draw(layer: Konva.Layer, nodeCache?: ReusableNodeCache) {
+    const context: RenderContext = {
+      layer,
+      previousNodeCache: nodeCache,
+      nextNodeCache: new ReusableNodeCache(),
+    };
     this.images.forEach(({ image, position }) => {
-      image.preRender(context);
-      const item = image.render(context, position);
-      layer.add(item);
+      const reusable = image.getReusableIds();
+      const node = image.createNode(context);
+      if (reusable?.length) {
+        context.nextNodeCache.addNode(image.getReusableIds(), node);
+      }
+      image.render(context, node, position);
+      layer.add(node);
     });
+    return context.nextNodeCache;
   }
 }

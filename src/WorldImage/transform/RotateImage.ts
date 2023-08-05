@@ -30,24 +30,29 @@ export class RotateImage extends WorldImage<Konva.Group> {
     return new Posn(rect.width(), rect.height());
   }
 
-  preRender(ctx: RenderContext): void {
-    this.image.preRender(ctx);
+  getReusableIds(): string[] {
+    // Not yet, reuse is more complicated.
+    return [];
   }
 
-  render(ctx: RenderContext, position: Posn) {
-    const image = this.image.render(ctx, Posn.origin);
+  createNode(ctx: RenderContext) {
+    const child = this.image.createNode(ctx);
+    ctx.nextNodeCache.addNode(this.image.getReusableIds(), child);
     const group = new Konva.Group({});
-    this.node = group;
-    group.add(image);
-    group.rotate(this.angle);
-    const width = group.width();
-    const height = group.height();
-    group.setPosition(
+    group.add(child);
+    return group;
+  }
+
+  render(ctx: RenderContext, node: Konva.Group, position: Posn) {
+    this.image.render(ctx, node.children![0], position);
+    node.rotate(this.angle);
+    const width = node.width();
+    const height = node.height();
+    node.setPosition(
       position
         .minus(new Posn(width / 2, height / 2))
         .plus(this.pinhole)
         .toVector(),
     );
-    return group;
   }
 }

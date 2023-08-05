@@ -1,5 +1,7 @@
 import Konva from 'konva';
 
+import { setFillAndStroke } from '../node-utils';
+
 import { WorldImage } from '@/WorldImage/WorldImage';
 import { Posn } from '@/util/Posn';
 import { OutlineMode } from '@/WorldImage';
@@ -25,22 +27,21 @@ export class CircleImage extends WorldImage<Konva.Circle> {
     return new Posn(this.radius * 2, this.radius * 2);
   }
 
-  preRender() {
-    this.node =
-      this.node ||
-      new Konva.Circle({
-        radius: this.radius,
-        fill: this.outline === OutlineMode.SOLID ? this.color.toString() : undefined,
-        stroke: this.color.toString(),
-        strokeWidth: 1,
-      });
+  getReusableIds(): string[] {
+    return [`${this.radius}-${this.outline}`, `${this.radius}`, 'any'];
   }
 
-  render(ctx: RenderContext, position: Posn) {
-    const node = this.getNode();
+  createNode() {
+    return new Konva.Circle({
+      strokeWidth: 1,
+    });
+  }
+
+  render(ctx: RenderContext, node: Konva.Circle, position: Posn) {
     const center = position.minus(this.pinhole);
+    node.radius(this.radius);
+    setFillAndStroke(node, this.outline, this.color);
     node.setPosition(center.toVector());
-    return node;
   }
 
   copy() {

@@ -1,29 +1,13 @@
-import { beforeEach, describe, expect, test } from 'vitest';
+import { beforeEach, describe, test } from 'vitest';
 
 import { expectWorldToMatchSnapshot, oneShotTestWorld } from '../../../__tests__/image-handling';
-import { fakeContext } from '../../../__tests__/fake-context';
 
-import { Posn } from '@/util/Posn';
 import { EllipseImage, OutlineMode } from '@/WorldImage';
 import { Color } from '@/util/Color';
 
 describe('Ellipse', () => {
   beforeEach(() => {
     document.body.innerHTML = '<div id="world"></div>';
-  });
-
-  test.skip('should render', () => {
-    const ctx = fakeContext();
-    const ellipse = new EllipseImage(30, 60, OutlineMode.SOLID, Color.RED);
-    expect(ellipse.size()).toEqual(new Posn(30, 60));
-    ellipse.preRender();
-    let rendered = ellipse.render(ctx, Posn.origin);
-    expect(rendered.position()).toEqual({ x: 0, y: 0 });
-
-    const moved = ellipse.movePinhole(5, 5);
-    moved.preRender();
-    rendered = moved.render(ctx, Posn.origin);
-    expect(rendered.position()).toEqual({ x: 5, y: 5 });
   });
 
   test('should render in world', () => {

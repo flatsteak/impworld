@@ -48,12 +48,12 @@ export function oneShotTestWorld({
       return s;
     }
   }
-  const preRenderSpy = vi.spyOn(renderedImage, 'preRender');
+  const createNodeSpy = vi.spyOn(renderedImage, 'createNode');
   const renderSpy = vi.spyOn(renderedImage, 'render');
   const world = new OneShotWorld();
   world.bigBang(w, h);
   expect(renderSpy).toHaveBeenCalledOnce();
-  expect(preRenderSpy).toHaveBeenCalledOnce();
+  expect(createNodeSpy).toHaveBeenCalledOnce();
   return { world, renderSpy };
 }
 

@@ -1,4 +1,5 @@
 import Konva from 'konva';
+import { Text } from 'konva/lib/shapes/Text';
 
 import { WorldImage } from '@/WorldImage/WorldImage';
 import { Posn } from '@/util/Posn';
@@ -14,6 +15,7 @@ export enum FontStyle {
 }
 
 export class TextImage extends WorldImage<Konva.Text> {
+  private _size: Posn;
   private text: string;
   private color: Color;
   private fontStyle: FontStyle = FontStyle.REGULAR;
@@ -41,7 +43,7 @@ export class TextImage extends WorldImage<Konva.Text> {
     if (maybeColor instanceof Color) {
       this.color = maybeColor;
     }
-    this.node = new Konva.Text({
+    const measure = new Konva.Text({
       x: 0,
       y: 0,
       align: 'left',
@@ -49,11 +51,17 @@ export class TextImage extends WorldImage<Konva.Text> {
       fontSize: this.fontSize,
       fontStyle: this.fontStyle,
       fill: this.color.toString(),
-    });
+    }).measureSize(this.text);
+    this._size = new Posn(measure.width, measure.height);
   }
 
   copy() {
     return new TextImage(this.text, this.fontSize, this.fontStyle, this.color) as this;
+  }
+
+  getReusableIds(): string[] {
+    // Not yet.
+    return [];
   }
 
   bbox() {
@@ -62,16 +70,20 @@ export class TextImage extends WorldImage<Konva.Text> {
   }
 
   size() {
-    const sz = this.getNode().measureSize(this.text);
-    return new Posn(sz.width, sz.height);
+    return this._size;
   }
 
-  preRender() {
-    // nothing to do since we needed the node to measure size
+  createNode(): Text {
+    return new Konva.Text({
+      align: 'left',
+    });
   }
 
-  render(ctx: RenderContext, position: Posn) {
-    this.getNode().setPosition(position.toVector());
-    return this.getNode();
+  render(ctx: RenderContext, node: Text, position: Posn): void {
+    node.text(this.text);
+    node.fontSize(this.fontSize);
+    node.fontStyle(this.fontStyle);
+    node.fill(this.color.toString());
+    node.setPosition(position.minus(this.pinhole).toVector());
   }
 }

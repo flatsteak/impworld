@@ -1,6 +1,8 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import Konva from 'konva';
 
+import { ReusableNodeCache } from './ReusableNodeCache';
+
 import { Posn } from '@/util/Posn';
 import { WorldEnd } from '@/World/WorldEnd';
 import { WorldScene } from '@/World/WorldScene';
@@ -18,6 +20,7 @@ export abstract class World {
   protected size: Posn = new Posn(1000, 1000);
   private isEndOfWorld = false;
   private tickTimer?: ReturnType<typeof setInterval>;
+  private renderedNodes?: ReusableNodeCache;
 
   /**
    * Modify your game state to reflect the passage of time
@@ -83,7 +86,7 @@ export abstract class World {
     if (!scene) {
       throw new Error('makeScene did not return a scene');
     }
-    scene.draw(this.layer);
+    this.renderedNodes = scene.draw(this.layer, this.renderedNodes);
   }
 
   private endTheWorld() {

@@ -10,16 +10,18 @@ export class EmptyImage extends WorldImage<Konva.Rect> {
     return new BBox(Posn.origin, Posn.origin);
   }
 
-  preRender() {
-    this.node = new Konva.Rect({
+  getReusableIds(): string[] {
+    return ['empty-node'];
+  }
+
+  createNode() {
+    return new Konva.Rect({
       width: 0,
       height: 0,
     });
   }
 
-  render() {
-    return this.getNode();
-  }
+  render() {}
 
   copy() {
     return new EmptyImage() as this;
