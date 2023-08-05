@@ -1,3 +1,10 @@
+## [1.1.3](https://github.com/flatsteak/impworld/compare/v1.1.2...v1.1.3) (2023-08-05)
+
+
+### Bug Fixes
+
+* **offset:** add OverlayImageOffsetAlign ([09580ba](https://github.com/flatsteak/impworld/commit/09580ba0689c97a7e8655fe6145045e891b51666))
+
 ## [1.1.2](https://github.com/flatsteak/impworld/compare/v1.1.1...v1.1.2) (2023-08-05)
 
 
