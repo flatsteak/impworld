@@ -5,31 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d9b343b7-bd43-4c41-a084-4208a9fad46c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../../__e2e__/example.e2e.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../__tests__/image-handling.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../__tests__/image-handling.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/flatsteak/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/flatsteak/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../playwright.config.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../src/World/World.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../src/World/World.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../src/World/WorldScene.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../src/World/WorldScene.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../src/WorldImage/FromFileImage.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../src/WorldImage/FromFileImage.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../src/WorldImage/TextImage.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../src/WorldImage/TextImage.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../src/WorldImage/WorldImage.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../src/WorldImage/WorldImage.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../src/WorldImage/combination/CombinationImage.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../src/WorldImage/combination/CombinationImage.test.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../src/WorldImage/combination/CombinationImage.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../src/WorldImage/combination/CombinationImage.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../src/WorldImage/combination/OverlayOffsetAlignBase.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../src/WorldImage/combination/OverlayOffsetAlignBase.test.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../src/WorldImage/combination/OverlayOffsetAlignBase.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../src/WorldImage/combination/OverlayOffsetAlignBase.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../src/WorldImage/combination/comboPositioning.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../src/WorldImage/combination/comboPositioning.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../src/WorldImage/shapes/CircleImage.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../src/WorldImage/shapes/CircleImage.test.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../src/WorldImage/shapes/CircleImage.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../src/WorldImage/shapes/CircleImage.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../src/WorldImage/shapes/EllipseImage.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../src/WorldImage/shapes/EllipseImage.test.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../src/WorldImage/shapes/EllipseImage.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../src/WorldImage/shapes/EllipseImage.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../src/WorldImage/shapes/RectangleImage.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../src/WorldImage/shapes/RectangleImage.test.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../src/WorldImage/shapes/RectangleImage.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../src/WorldImage/shapes/RectangleImage.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../src/WorldImage/transform/RotateImage.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../src/WorldImage/transform/RotateImage.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../src/util/Posn.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../src/util/Posn.test.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../../yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,6 +51,7 @@
     <setting file="jar://$PROJECT_DIR$/lib/javalib.jar!/javalib/worldcanvas/CanvasPanel.class" root0="SKIP_INSPECTION" />
     <setting file="jar://$PROJECT_DIR$/lib/javalib.jar!/javalib/worldcanvas/WorldCanvas.class" root0="SKIP_INSPECTION" />
     <setting file="jar://$PROJECT_DIR$/lib/javalib.jar!/javalib/worldcanvas/WorldSceneBase.class" root0="SKIP_INSPECTION" />
+    <setting file="jar://$PROJECT_DIR$/lib/javalib.jar!/javalib/worldimages/BesideAlignImage.class" root0="SKIP_INSPECTION" />
     <setting file="jar://$PROJECT_DIR$/lib/javalib.jar!/javalib/worldimages/BesideImage.class" root0="SKIP_INSPECTION" />
     <setting file="jar://$PROJECT_DIR$/lib/javalib.jar!/javalib/worldimages/BoundingBox.class" root0="SKIP_INSPECTION" />
     <setting file="jar://$PROJECT_DIR$/lib/javalib.jar!/javalib/worldimages/CircleImage.class" root0="SKIP_INSPECTION" />
@@ -144,7 +121,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1690916235393</updated>
-      <workItem from="1690916236573" duration="20784000" />
+      <workItem from="1690916236573" duration="22751000" />
     </task>
     <servers />
   </component>

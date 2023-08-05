@@ -1,8 +1,18 @@
 import { config } from '@openapi-typescript-infra/coconfig';
 
 config['tsconfig.json'].configuration.compilerOptions.incremental = false;
-config['tsconfig.json'].configuration.include.push('tsup.config.ts');
-config['tsconfig.build.json'].configuration.exclude.push('tsup.config.ts');
+config['tsconfig.json'].configuration.include.push('tsup.config.ts', 'example/**/*.ts');
+config['tsconfig.build.json'].configuration.exclude.push('tsup.config.ts', 'example/**/*.ts');
+
+(config['.eslintrc.js'].configuration as any).overrides[0].settings = {
+  'import/resolver': {
+    typescript: {},
+  },
+};
+
+config['.eslintignore'] += `
+example/dist
+dist/`;
 
 const baseViTest = config['vitest.config.ts']?.configuration as () => any;
 config['vitest.config.ts']!.configuration = () => {

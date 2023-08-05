@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, test, vi } from 'vitest';
+import { beforeEach, describe, expect, test } from 'vitest';
 
 import { expectWorldToMatchSnapshot, oneShotTestWorld } from '../../../__tests__/image-handling';
 import { fakeContext } from '../../../__tests__/fake-context';

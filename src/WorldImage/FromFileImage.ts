@@ -46,7 +46,7 @@ export class FromFileImage extends WorldImage<Konva.Image> {
     return new Posn(this.image.width, this.image.height);
   }
 
-  preRender(ctx: RenderContext): void {
+  preRender(): void {
     this.node =
       this.node ||
       new Konva.Image({

@@ -5,7 +5,6 @@ import { expectWorldToMatchSnapshot, oneShotTestWorld } from '../../../__tests__
 import { Posn } from '@/util/Posn';
 import { Color } from '@/util/Color';
 import { OutlineMode, RectangleImage } from '@/WorldImage';
-import { BBox } from '@/util/BBox';
 
 describe('Rectangle', () => {
   beforeEach(() => {

@@ -1,7 +1,16 @@
 import { TestWorld } from './TestWorld';
 import { RunTests } from './TestCases';
 
-(window as any).impworld = {
+declare global {
+  interface Window {
+    impworld: {
+      TestWorld: typeof TestWorld;
+      RunTests: typeof RunTests;
+    };
+  }
+}
+
+window.impworld = {
   TestWorld,
   RunTests,
 };
