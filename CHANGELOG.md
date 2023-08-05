@@ -1,3 +1,13 @@
+## [1.1.2](https://github.com/flatsteak/impworld/compare/v1.1.1...v1.1.2) (2023-08-05)
+
+
+### Bug Fixes
+
+* **lint:** clean up some lint issues ([4fc6337](https://github.com/flatsteak/impworld/commit/4fc6337a92d7be0018ec750d1ded159b9b0da19c))
+* **lint:** cleanup lint setup ([171e7d1](https://github.com/flatsteak/impworld/commit/171e7d1d447f73e5cf4fbe4337fc58e5936834b1))
+* **overlay:** define an overlay image class that mirrors java implementation ([a39772a](https://github.com/flatsteak/impworld/commit/a39772ae9b74d57bd1d803111f7c34877ac1daee))
+* **overlay:** rework all overlay handling to match impworld ([9cdbf2b](https://github.com/flatsteak/impworld/commit/9cdbf2bcedf40ac2f208eb2886da9c9408823614))
+
 ## [1.1.1](https://github.com/flatsteak/impworld/compare/v1.1.0...v1.1.1) (2023-07-31)
 
 
