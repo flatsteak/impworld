@@ -29,6 +29,7 @@ export abstract class World {
   protected onTick(): HandlerResult {}
 
   protected onKeyEvent(key: string): HandlerResult {}
+  protected onKeyReleased(key: string): HandlerResult {}
 
   // Mouse events that can be optionally implemented
   protected onMouseClicked(pos: Posn): HandlerResult {}
@@ -56,6 +57,9 @@ export abstract class World {
     });
     window.addEventListener('keydown', (e) => {
       this.onKeyEvent(mapKey(e));
+    });
+    window.addEventListener('keyup', (e) => {
+      this.onKeyReleased(mapKey(e));
     });
     this.layer = new Konva.Layer();
     this.stage.on('click', (e) => {
