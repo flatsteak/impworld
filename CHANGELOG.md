@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/flatsteak/impworld/compare/v1.2.5...v1.3.0) (2023-08-06)
+
+
+### Features
+
+* **touch:** add touch events ([e463493](https://github.com/flatsteak/impworld/commit/e4634936d8cad99882c9bd2b40800e96aaf15638))
+
 ## [1.2.5](https://github.com/flatsteak/impworld/compare/v1.2.4...v1.2.5) (2023-08-06)
 
 
