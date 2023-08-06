@@ -1,3 +1,10 @@
+## [1.2.3](https://github.com/flatsteak/impworld/compare/v1.2.2...v1.2.3) (2023-08-06)
+
+
+### Bug Fixes
+
+* **key:** map keys to java names ([16ad50e](https://github.com/flatsteak/impworld/commit/16ad50ec99e3561060e62c5989350e445f8a2e84))
+
 ## [1.2.2](https://github.com/flatsteak/impworld/compare/v1.2.1...v1.2.2) (2023-08-05)
 
 
