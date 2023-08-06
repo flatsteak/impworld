@@ -29,7 +29,7 @@ export class EllipseImage extends WorldImage<Konva.Ellipse> {
   }
 
   getReusableIds(): string[] {
-    return [`${this.width}-${this.height}-${this.outline}`, `${this.width}-${this.height}`, 'any'];
+    return [`${this.width}-${this.height}-${this.outline}`];
   }
 
   createNode(ctx: RenderContext) {

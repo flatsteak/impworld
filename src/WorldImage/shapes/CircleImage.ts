@@ -28,7 +28,7 @@ export class CircleImage extends WorldImage<Konva.Circle> {
   }
 
   getReusableIds(): string[] {
-    return [`${this.radius}-${this.outline}`, `${this.radius}`, 'any'];
+    return [`${this.radius}-${this.outline}`];
   }
 
   createNode(ctx: RenderContext) {
