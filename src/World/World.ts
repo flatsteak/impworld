@@ -2,6 +2,7 @@
 import Konva from 'konva';
 
 import { ReusableNodeCache } from './ReusableNodeCache';
+import { TouchEvents, addGestureHandlers } from './Gesture';
 
 import { Posn } from '@/util/Posn';
 import { WorldEnd } from '@/World/WorldEnd';
@@ -37,6 +38,7 @@ export abstract class World {
   protected onMouseExited(pos: Posn): HandlerResult {}
   protected onMousePressed(pos: Posn): HandlerResult {}
   protected onMouseReleased(pos: Posn): HandlerResult {}
+  protected onGesture(name: TouchEvents, pos: Posn): HandlerResult {}
 
   /**
    * Called if one of the other methods returns endOfWorld
@@ -61,6 +63,7 @@ export abstract class World {
     window.addEventListener('keyup', (e) => {
       this.onKeyReleased(mapKey(e));
     });
+    addGestureHandlers(document.body, (name, pos) => this.onGesture(name, pos));
     this.layer = new Konva.Layer();
     this.stage.on('click', (e) => {
       const position = this.stage?.getPointerPosition();

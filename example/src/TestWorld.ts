@@ -30,7 +30,7 @@ export class TestWorld extends World {
     );
   }
 
-  onKeyEvent(key: string) {
+  protected onKeyEvent(key: string) {
     if (key === 'ArrowLeft') {
       this.direction = new Posn(-1, this.direction.y);
     } else if (key === 'ArrowRight') {
@@ -42,6 +42,17 @@ export class TestWorld extends World {
     } else if (key === 'r') {
       this.delta = new Posn(Math.random() * 10, Math.random() * 10);
     }
+  }
+
+  protected onGesture(name: 'swipeleft' | 'swiperight' | 'swipeup' | 'swipedown') {
+    this.onKeyEvent(
+      {
+        swipeleft: 'ArrowLeft',
+        swiperight: 'ArrowRight',
+        swipeup: 'ArrowUp',
+        swipedown: 'ArrowDown',
+      }[name],
+    );
   }
 
   onTick() {

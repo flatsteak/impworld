@@ -30,6 +30,9 @@ export class WorldScene {
     this.images.forEach(({ image, position }) => {
       const reusable = image.getReusableIds();
       const node = image.createNode(context);
+      if (node.parent) {
+        node.remove();
+      }
       if (reusable?.length) {
         context.nextNodeCache.addNode(image.getReusableIds(), node);
       }
