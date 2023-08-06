@@ -1,3 +1,10 @@
+## [1.2.4](https://github.com/flatsteak/impworld/compare/v1.2.3...v1.2.4) (2023-08-06)
+
+
+### Bug Fixes
+
+* **key:** add key release event ([01756c1](https://github.com/flatsteak/impworld/commit/01756c17fb69fd20633af52e90183012ceaeb037))
+
 ## [1.2.3](https://github.com/flatsteak/impworld/compare/v1.2.2...v1.2.3) (2023-08-06)
 
 
