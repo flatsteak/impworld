@@ -30,7 +30,7 @@ export class TestWorld extends World {
     );
   }
 
-  protected onKeyEvent(key: string) {
+  onKeyEvent(key: string) {
     if (key === 'ArrowLeft') {
       this.direction = new Posn(-1, this.direction.y);
     } else if (key === 'ArrowRight') {

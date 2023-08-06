@@ -7,6 +7,7 @@ import { Posn } from '@/util/Posn';
 import { WorldEnd } from '@/World/WorldEnd';
 import { WorldScene } from '@/World/WorldScene';
 import { WorldImage } from '@/WorldImage';
+import { mapKey } from '@/util/KeyMap';
 
 class WorldEndMarker {
   constructor(public message: string) {}
@@ -54,7 +55,7 @@ export abstract class World {
       height,
     });
     window.addEventListener('keydown', (e) => {
-      this.onKeyEvent(e.key);
+      this.onKeyEvent(mapKey(e));
     });
     this.layer = new Konva.Layer();
     this.stage.on('click', (e) => {
@@ -98,7 +99,6 @@ export abstract class World {
       console.log('The world has ended');
       clearInterval(this.tickTimer);
       this.tickTimer = undefined;
-      // this.stage?.removeChildren();
     }
   }
 
