@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/flatsteak/impworld/compare/v1.3.0...v1.4.0) (2023-08-07)
+
+
+### Features
+
+* **pause:** allow pause/restart of the world ([31ea663](https://github.com/flatsteak/impworld/commit/31ea663a03c5d2a49f34f54f28cb1501ec3a12af))
+
 # [1.3.0](https://github.com/flatsteak/impworld/compare/v1.2.5...v1.3.0) (2023-08-06)
 
 
