@@ -49,4 +49,9 @@ export class Posn {
   toVector() {
     return { x: this.x, y: this.y };
   }
+
+  static center(...posns: Posn[]): Posn {
+    const sum = posns.reduce((acc, p) => acc.plus(p), Posn.origin);
+    return sum.dividedBy(posns.length);
+  }
 }

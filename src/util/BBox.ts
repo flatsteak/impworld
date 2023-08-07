@@ -19,6 +19,13 @@ export class BBox {
     );
   }
 
+  include(point: Posn) {
+    return new BBox(
+      new Posn(Math.min(this.topLeft.x, point.x), Math.min(this.topLeft.y, point.y)),
+      new Posn(Math.max(this.bottomRight.x, point.x), Math.max(this.bottomRight.y, point.y)),
+    );
+  }
+
   equals(other: BBox): boolean {
     return this.topLeft.equals(other.topLeft) && this.bottomRight.equals(other.bottomRight);
   }

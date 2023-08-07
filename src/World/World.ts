@@ -109,6 +109,22 @@ export abstract class World {
     }
   }
 
+  protected pause(clearScene: boolean = true) {
+    clearInterval(this.tickTimer);
+    this.tickTimer = undefined;
+    if (clearScene && this.layer) {
+      this.layer.destroyChildren();
+    }
+  }
+
+  protected resume(speed: number) {
+    if (this.tickTimer) {
+      throw new Error('Resume called on an already running world.');
+    }
+    this.runTick();
+    this.tickTimer = setInterval(() => this.runTick(), speed * 1000);
+  }
+
   /**
    * Override to have finer grained control over when the
    * world ends.

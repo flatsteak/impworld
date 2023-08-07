@@ -77,7 +77,17 @@ public class Main {
                                   .height(160)
                                   .build();
     }
+
+    static OneShotWorld.Config triangle() {
+        var t1 = new TriangleImage(new Posn(-10, -20), new Posn(0, 48), new Posn(36, 48), OutlineMode.SOLID, Color.BLACK).movePinhole(-25, -35);
+        return OneShotWorld.Config.builder()
+                                  .image(t1)
+                                  .height(150)
+                                  .width(150)
+                                  .build();
+    }
+
     public static void main(String[] args) {
-        OneShotWorld.run(beside());
+        OneShotWorld.run(triangle());
     }
 }

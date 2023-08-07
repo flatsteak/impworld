@@ -11,7 +11,9 @@ import {
   oneShotWorld,
 } from '../../src';
 
-const solo = undefined; // 'originBeside';
+import { TriangleImage } from '@/WorldImage/shapes/TriangleImage';
+
+const solo = 'triangle'; // 'originBeside';
 const tests = {
   originCircle: {
     getImage() {
@@ -88,6 +90,19 @@ const tests = {
     },
     width: 160,
     height: 160,
+  },
+  triangle: {
+    getImage() {
+      return new TriangleImage(
+        new Posn(-10, -20),
+        new Posn(0, 48),
+        new Posn(36, 48),
+        OutlineMode.SOLID,
+        Color.BLACK,
+      ).movePinhole(-25, -35);
+    },
+    width: 150,
+    height: 150,
   },
 } as const;
 

@@ -39,6 +39,7 @@
   "scripts": {
     "build": "tsup src/index.ts",
     "build:example": "cd example && tsup --platform browser --tsconfig tsconfig.example.json --target chrome112 --format iife src/index.ts",
+    "build:all": "yarn build && yarn build:example",
     "clean": "yarn dlx rimraf dist",
     "format": "yarn prettier --write .",
     "lint": "eslint .",
